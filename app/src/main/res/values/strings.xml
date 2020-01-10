@@ -18,4 +18,6 @@
         some other exercise here
     </string>
     <string name="start_workout_button">Start!</string>
+    <string name="title_activity_active_workout">ActiveWorkout</string>
+    <string name="finish_workout_button">Finish</string>
 </resources>
