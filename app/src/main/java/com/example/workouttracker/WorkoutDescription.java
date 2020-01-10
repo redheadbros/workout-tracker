@@ -1,5 +1,6 @@
 package com.example.workouttracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,8 +24,8 @@ public class WorkoutDescription extends AppCompatActivity {
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Snackbar.make(view, "START WORKOUT", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
+        Intent gotoWorkout = new Intent(WorkoutDescription.this, ActiveWorkout.class);
+        startActivity(gotoWorkout);
       }
     });
 
