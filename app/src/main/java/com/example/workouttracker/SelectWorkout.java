@@ -28,4 +28,8 @@ public class SelectWorkout extends AppCompatActivity {
       }
     });
   }
+
+  public void openWorkout(View v) {
+
+  }
 }

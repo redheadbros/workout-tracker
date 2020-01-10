@@ -17,12 +17,14 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Leg Day" />
+            android:onClick="openWorkout"
+            android:text="@string/workout_1" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="General Strength Training" />
+            android:onClick="openWorkout"
+            android:text="@string/workout_2" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
