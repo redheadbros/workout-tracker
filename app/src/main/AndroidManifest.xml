@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".WorkoutDescription"
+            android:label="@string/title_activity_workout_description"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".SelectWorkout"
             android:label="@string/title_activity_select_workout"
             android:theme="@style/AppTheme.NoActionBar">
@@ -22,8 +26,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
