@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Workout Tracker</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_select_workout">SelectWorkout</string>
+    <string name="workout_1">Workout 1</string>
+    <string name="workout_2">Workout 2</string>
 </resources>
