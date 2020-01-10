@@ -23,16 +23,16 @@ public class WorkoutDescription extends AppCompatActivity {
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        Snackbar.make(view, "START WORKOUT", Snackbar.LENGTH_LONG)
             .setAction("Action", null).show();
       }
     });
 
     FloatingActionButton fab2 = findViewById(R.id.fab2);
-    fab.setOnClickListener(new View.OnClickListener() {
+    fab2.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        Snackbar.make(view, "EDIT WORKOUT", Snackbar.LENGTH_LONG)
             .setAction("Action", null).show();
       }
     });
