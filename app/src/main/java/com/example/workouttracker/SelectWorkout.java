@@ -1,5 +1,6 @@
 package com.example.workouttracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,6 +31,8 @@ public class SelectWorkout extends AppCompatActivity {
   }
 
   public void openWorkout(View v) {
+    Intent gotoWorkout = new Intent(SelectWorkout.this, MainActivity.class);
 
+    startActivity(gotoWorkout);
   }
 }
