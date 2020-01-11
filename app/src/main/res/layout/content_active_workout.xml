@@ -46,35 +46,56 @@
                         android:layout_height="wrap_content"
                         android:text="CYCLE NAME" />
 
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exercise Name" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exercise Name" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cycle Repetitions:" />
+
                     <CheckBox
-                        android:id="@+id/checkBox3"
+                        android:id="@+id/checkBox4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="complete" />
+                        android:layout_height="wrap_content" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView4"
+                    <CheckBox
+                        android:id="@+id/checkBox5"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exercise Name" />
+                        android:layout_height="wrap_content" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView4"
+                    <CheckBox
+                        android:id="@+id/checkBox6"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exercise Name" />
+                        android:layout_height="wrap_content" />
 
                 </TableRow>
 
@@ -94,35 +115,56 @@
                         android:layout_height="wrap_content"
                         android:text="CYCLE NAME" />
 
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exercise Name" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exercise Name" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cycle Repetitions:" />
+
                     <CheckBox
-                        android:id="@+id/checkBox3"
+                        android:id="@+id/checkBox4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="complete" />
+                        android:layout_height="wrap_content" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView4"
+                    <CheckBox
+                        android:id="@+id/checkBox5"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exercise Name" />
+                        android:layout_height="wrap_content" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView4"
+                    <CheckBox
+                        android:id="@+id/checkBox6"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exercise Name" />
+                        android:layout_height="wrap_content" />
 
                 </TableRow>
 
@@ -142,35 +184,56 @@
                         android:layout_height="wrap_content"
                         android:text="CYCLE NAME" />
 
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exercise Name" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exercise Name" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cycle Repetitions:" />
+
                     <CheckBox
-                        android:id="@+id/checkBox3"
+                        android:id="@+id/checkBox4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="complete" />
+                        android:layout_height="wrap_content" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView4"
+                    <CheckBox
+                        android:id="@+id/checkBox5"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exercise Name" />
+                        android:layout_height="wrap_content" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView4"
+                    <CheckBox
+                        android:id="@+id/checkBox6"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exercise Name" />
+                        android:layout_height="wrap_content" />
 
                 </TableRow>
 
