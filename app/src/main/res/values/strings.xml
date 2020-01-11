@@ -21,4 +21,11 @@
     <string name="title_activity_active_workout">ActiveWorkout</string>
     <string name="finish_workout_button">Finish</string>
     <string name="numOfSets">0</string>
+    <string name="title_activity_cycles_editor2">activity_cycles_editor2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_exercise_editior">activity_exercise_editior</string>
+    <string name="title_activity_cycles_editor">cyclesEditor</string>
+    <string name="title_activity_workout_editor">workoutEditor</string>
 </resources>
