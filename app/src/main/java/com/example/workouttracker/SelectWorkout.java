@@ -35,8 +35,8 @@ public class SelectWorkout extends AppCompatActivity {
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Snackbar.make(view, "CREATE NEW WORKOUT", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
+        Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, workoutEditor.class);
+        startActivity(gotoWorkoutEditior);
       }
     });
   }

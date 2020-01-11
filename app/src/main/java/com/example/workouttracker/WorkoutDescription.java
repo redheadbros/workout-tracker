@@ -30,11 +30,11 @@ public class WorkoutDescription extends AppCompatActivity {
     });
 
     FloatingActionButton fab2 = findViewById(R.id.fab2);
-    fab2.setOnClickListener(new View.OnClickListener() {
+    fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Snackbar.make(view, "EDIT WORKOUT", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
+        Intent gotoWorkoutEditior = new Intent(WorkoutDescription.this, workoutEditor.class);
+        startActivity(gotoWorkoutEditior);
       }
     });
   }
