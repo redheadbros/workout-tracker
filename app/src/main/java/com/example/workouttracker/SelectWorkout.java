@@ -10,13 +10,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 
 public class SelectWorkout extends AppCompatActivity {
+  private Button button;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_select_workout);
+
+    button = (Button)findViewById(R.id.buttonh);
+    button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        openhistory();
+      }
+    });
+
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
@@ -34,5 +45,10 @@ public class SelectWorkout extends AppCompatActivity {
     Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
 
     startActivity(gotoWorkout);
+  }
+
+  public void openhistory(){
+    Intent intent = new Intent(SelectWorkout.this, history.class);
+    startActivity(intent);
   }
 }
