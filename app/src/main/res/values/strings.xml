@@ -20,5 +20,6 @@
     <string name="start_workout_button">Start</string>
     <string name="title_activity_active_workout">Active Workout</string>
     <string name="finish_workout_button">Finish</string>
+    <string name="button">Button</string>
     <string name="numOfSets">0</string>
 </resources>
