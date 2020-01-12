@@ -111,18 +111,14 @@
         android:id="@+id/Name"
         android:layout_width="213dp"
         android:layout_height="77dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
         android:gravity="center"
         android:text="Name"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar4"
+        tools:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/Description"
@@ -172,6 +168,7 @@
         android:layout_marginStart="41dp"
         android:layout_marginLeft="41dp"
         android:layout_marginBottom="183dp"
+        android:onClick="subtractNumber"
         android:text="-"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -181,17 +178,13 @@
         android:id="@+id/Sets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginLeft="180dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginRight="180dp"
         android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal"
         android:text="Sets"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/numOfSets"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getDescription" />
 

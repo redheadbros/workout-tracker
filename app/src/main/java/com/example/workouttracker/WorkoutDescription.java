@@ -30,7 +30,7 @@ public class WorkoutDescription extends AppCompatActivity {
     });
 
     FloatingActionButton fab2 = findViewById(R.id.fab2);
-    fab.setOnClickListener(new View.OnClickListener() {
+    fab2.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         Intent gotoWorkoutEditior = new Intent(WorkoutDescription.this, workoutEditor.class);

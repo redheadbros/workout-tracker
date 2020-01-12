@@ -42,12 +42,11 @@
 
 
     <TextView
-        android:id="@+id/numOfSets"
+        android:id="@+id/numOfCycles"
         android:layout_width="80dp"
         android:layout_height="109dp"
         android:layout_marginBottom="164dp"
         android:gravity="center"
-        android:text="@string/numOfSets"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,13 +97,13 @@
         android:id="@+id/newExercise"
         android:layout_width="276dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="72dp"
+        android:gravity="center_horizontal"
         android:onClick="newExercise"
         android:text="New Exercise"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -120,17 +119,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/NameOfWorkout"
+        android:id="@+id/NameOfCycle"
         android:layout_width="330dp"
         android:layout_height="82dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="156dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:baselineAligned="false"
         android:ems="10"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:hint="Name Of Cycles"
         android:inputType="textPersonName"
         android:maxLength="16"
@@ -139,7 +138,6 @@
         android:text=""
         android:textColorHint="#95A1AA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

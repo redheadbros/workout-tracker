@@ -86,17 +86,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/NameOfWorkout"
+        android:id="@+id/NameOfCycle"
         android:layout_width="330dp"
         android:layout_height="82dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginTop="188dp"
         android:baselineAligned="false"
         android:ems="10"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:hint="Name Of Workout"
         android:inputType="textPersonName"
         android:maxLength="16"
@@ -105,7 +101,6 @@
         android:text=""
         android:textColorHint="#95A1AA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

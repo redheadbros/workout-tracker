@@ -3,16 +3,16 @@ package com.example.workouttracker;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 public class cyclesEditor extends AppCompatActivity {
+
+    private int numberOfCycle = 0;
+    TextView cycleNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +20,7 @@ public class cyclesEditor extends AppCompatActivity {
         setContentView(R.layout.activity_cycles_editor);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        Button cancel = findViewById(R.id.cancelButton);
-
-    }
-
-    public void goWorkoutEditior(View v){
-        Intent goWorkoutEditior = new Intent(cyclesEditor.this, workoutEditor.class);
-        startActivity(goWorkoutEditior);
+        cycleNum = findViewById(R.id.numOfCycles);
     }
 
     public void newExercise(View v){
@@ -39,6 +32,17 @@ public class cyclesEditor extends AppCompatActivity {
         finish();
     }
 
+    public void addNumber(View v){
+        numberOfCycle +=1;
+        cycleNum.setText(String.valueOf(numberOfCycle));
+    }
+
+    public void subtractNumber(View v){
+        if(numberOfCycle > 0){
+            numberOfCycle -=1;
+        }
+        cycleNum.setText(String.valueOf(numberOfCycle));
+    }
 
 
 }

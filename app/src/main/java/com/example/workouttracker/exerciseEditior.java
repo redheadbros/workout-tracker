@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class exerciseEditior extends AppCompatActivity {
 
-    private int numberOfSets = 0;
+    private int numberOfSets;
     TextView setsNum;
 
     @Override
@@ -22,21 +22,9 @@ public class exerciseEditior extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_editior);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setsNum = (TextView)findViewById(R.id.numOfSets);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setsNum = findViewById(R.id.numOfSets);
     }
 
-    public int getNumberOfSets(View v){
-        return numberOfSets;
-    }
 
     public void addNumber(View v){
         numberOfSets +=1;
