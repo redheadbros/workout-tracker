@@ -5,18 +5,18 @@ import java.util.ArrayList;
 public class Cycle {
     private String name;
     private ArrayList<Exercise> exercises;
-    private int cycleReptations;
+    private int cycleRepetitions;
 
     public Cycle(){
         name = "";
         exercises = new ArrayList<>();
-        cycleReptations = 0;
+        cycleRepetitions = 0;
     }
 
     public Cycle(String name, ArrayList<Exercise> exercises, int cycleReptations){
         this.name = name;
         this.exercises = exercises;
-        this.cycleReptations = cycleReptations;
+        this.cycleRepetitions = cycleReptations;
     }
 
     public void setName(String name) {
@@ -35,11 +35,11 @@ public class Cycle {
         return exercises;
     }
 
-    public void setCycleReptations(int cycleReptations) {
-        this.cycleReptations = cycleReptations;
+    public void setCycleRepetitions(int cycleRepetitions) {
+        this.cycleRepetitions = cycleRepetitions;
     }
 
-    public int getCycleReptations() {
-        return cycleReptations;
+    public int getCycleRepetitions() {
+        return cycleRepetitions;
     }
 }
