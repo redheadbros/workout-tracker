@@ -11,6 +11,12 @@ public class Exercise {
         sets = 0;
     }
 
+    public Exercise(String name, String description, int sets){
+        this.name = name;
+        this.description = description;
+        this.sets = sets;
+    }
+
     public void setName(String name){
         this.name = name;
     }

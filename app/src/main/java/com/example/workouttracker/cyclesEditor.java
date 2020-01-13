@@ -9,10 +9,13 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.workouttracker.datastructure.Exercise;
+
 public class cyclesEditor extends AppCompatActivity {
 
-    private int numberOfCycle = 0;
+    private int numberOfCycle = 1;
     TextView cycleNum;
+    TextView cycleName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,7 @@ public class cyclesEditor extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         cycleNum = findViewById(R.id.numOfCycles);
+        cycleName = findViewById(R.id.NameOfCycle);
     }
 
     public void newExercise(View v){
@@ -30,6 +34,10 @@ public class cyclesEditor extends AppCompatActivity {
 
     public void goback(View v){
         finish();
+    }
+
+    public void saveCycle(View v){
+
     }
 
     public void addNumber(View v){
