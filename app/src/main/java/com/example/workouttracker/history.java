@@ -31,6 +31,7 @@ public class history extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                openSelectWorkout();
 
             }
         });
@@ -79,5 +80,9 @@ public class history extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
+    }
+    public void openSelectWorkout() {
+        Intent intent = new Intent(this, SelectWorkout.class);
+        startActivity(intent);
     }
 }
