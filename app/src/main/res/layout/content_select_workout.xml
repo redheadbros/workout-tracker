@@ -27,10 +27,5 @@
             android:onClick="openWorkout"
             android:text="@string/workout_2" />
 
-        <Button
-            android:id="@+id/buttonh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HISTORY" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -11,17 +11,18 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class SelectWorkout extends AppCompatActivity {
-  private Button button;
+  private ImageView imageView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_select_workout);
 
-    button = (Button)findViewById(R.id.buttonh);
-    button.setOnClickListener(new View.OnClickListener() {
+    imageView = (ImageView) findViewById(R.id.imageView3);
+    imageView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         openhistory();

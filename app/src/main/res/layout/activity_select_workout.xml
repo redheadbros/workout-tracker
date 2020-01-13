@@ -40,10 +40,19 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="bottom|right"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_input_add" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="95dp"
+        android:layout_height="63dp"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="16dp"
+
+        android:background="#FFFFFF"
+        app:srcCompat="@drawable/ic_access_time_black_24dp" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
