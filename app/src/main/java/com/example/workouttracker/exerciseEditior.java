@@ -1,5 +1,6 @@
 package com.example.workouttracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.workouttracker.datastructure.Exercise;
@@ -17,8 +18,9 @@ public class exerciseEditior extends AppCompatActivity {
 
     private int numberOfSets;
     TextView setsNum;
-    TextView exerciseName;
-    TextView exerciseDes;
+    EditText exerciseName;
+    EditText exerciseDes;
+    Exercise exercise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +31,30 @@ public class exerciseEditior extends AppCompatActivity {
         setsNum = findViewById(R.id.numOfSets);
         exerciseName = findViewById(R.id.getExceriseName);
         exerciseDes = findViewById(R.id.getDescription);
+        setsNum.setText("0");
+        numberOfSets = 1;
+        exercise = new Exercise();
     }
 
     public void saveExercise(View v){
-        Exercise exercise = new Exercise(exerciseName.getText().toString(),exerciseDes.getText().toString(),numberOfSets);
+        exercise.setName(exerciseName.getText().toString());
+        exercise.setDescription((exerciseDes.getText().toString()));
+        Intent cycleEditor = new Intent(exerciseEditior.this, cyclesEditor.class);
+        cycleEditor.putExtra(e)
     }
 
 
     public void addNumber(View v){
         numberOfSets +=1;
+        exercise.setSets(numberOfSets);
         setsNum.setText(String.valueOf(numberOfSets));
     }
 
     public void subtractNumber(View v){
-        if(numberOfSets > 0){
+        if(numberOfSets > 1){
             numberOfSets -=1;
         }
+        exercise.setSets(numberOfSets);
         setsNum.setText(String.valueOf(numberOfSets));
     }
 
