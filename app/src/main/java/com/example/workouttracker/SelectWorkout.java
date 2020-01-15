@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 public class SelectWorkout extends AppCompatActivity {
   private ImageView imageView;
+  private ImageView iV;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,8 @@ public class SelectWorkout extends AppCompatActivity {
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
+    iV = (ImageView) findViewById(R.id.imageView4);
+    iV.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, workoutEditor.class);

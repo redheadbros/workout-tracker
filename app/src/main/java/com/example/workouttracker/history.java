@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.example.workouttracker.R;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -26,6 +25,9 @@ public class history extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
 
         imageView = (ImageView)findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -39,21 +41,7 @@ public class history extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listview);
 
         HashMap<String, String> dateWorkout = new HashMap<>();
-        dateWorkout.put("10/01/2020", "Leg Day");
-        dateWorkout.put("11/01/2019", "Arm Day");
-        dateWorkout.put("10/10/2019", "Full Body");
-        dateWorkout.put("25/12/2019", "Yoga");
-        dateWorkout.put("30/01/2019", "Leg Day");
-        dateWorkout.put("17/07/2019", "Arm Day");
-        dateWorkout.put("23/08/2019", "Yoga");
-        dateWorkout.put("18/12/2019", "Full Body");
-        dateWorkout.put("02/12/2019", "Leg Day");
-        dateWorkout.put("04/01/2020", "Arm Day");
-        dateWorkout.put("03/03/2019", "Yoga");
-        dateWorkout.put("04/04/2019", "Leg Day");
-
-
-
+        dateWorkout.put((simpleDateFormat.format(date)),"Leg Day");
 
 
 
