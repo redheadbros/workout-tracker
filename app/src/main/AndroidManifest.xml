@@ -19,7 +19,7 @@
             android:label="@string/title_activity_cycles_editor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".exerciseEditior"
+            android:name=".exerciseEditor"
             android:label="@string/title_activity_exercise_editior"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

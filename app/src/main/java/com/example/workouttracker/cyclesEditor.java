@@ -7,37 +7,80 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.workouttracker.datastructure.Exercise;
+import com.example.workouttracker.datastructure.Cycle;
+import com.example.workouttracker.datastructure.Workout;
+
+import java.util.ArrayList;
 
 public class cyclesEditor extends AppCompatActivity {
 
+    Cycle cycle = new Cycle();
+    Workout workout;
+    Workout originWorkout;
+    private int cycleIndex;
     private int numberOfCycle = 1;
     TextView cycleNum;
-    TextView cycleName;
+    EditText cycleName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent dataReceiver = getIntent();
+        workout = (Workout)(dataReceiver.getSerializableExtra("workout"));
+        cycleIndex = (int)(dataReceiver.getSerializableExtra("cycleIndex"));
+        originWorkout = workout;
+        if(cycleIndex == workout.getCycles().size()){
+            originWorkout = workout;
+            ArrayList<Cycle> cycles = workout.getCycles();
+            cycles.add(cycle);
+            workout.setCycles(cycles);
+        }else {
+            cycle = workout.getCycles().get(cycleIndex);
+        }
         setContentView(R.layout.activity_cycles_editor);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         cycleNum = findViewById(R.id.numOfCycles);
         cycleName = findViewById(R.id.NameOfCycle);
+        numberOfCycle = cycle.getCycleReptations();
+        cycleNum.setText(String.valueOf(numberOfCycle));
+    }
+
+    public void EditExercise(View v, int exerciseIndex){
+        Intent editExercise = new Intent(cyclesEditor.this, exerciseEditor.class);
+        editExercise.putExtra("exerciseIndex",exerciseIndex);
+        editExercise.putExtra("workout",workout);
+        editExercise.putExtra("cycleIndex",cycleIndex);
+        startActivity(editExercise);
+        finish();
     }
 
     public void newExercise(View v){
-        Intent newExercise = new Intent(cyclesEditor.this, exerciseEditior.class);
+        saveName();
+        Intent newExercise = new Intent(cyclesEditor.this, exerciseEditor.class);
+        newExercise.putExtra("exerciseIndex",cycle.getExercises().size());
+        newExercise.putExtra("workout",workout);
+        newExercise.putExtra("cycleIndex",cycleIndex);
         startActivity(newExercise);
+        finish();
     }
 
-    public void goback(View v){
+    public void backToWorkout(View v){
+        Intent workoutPage = new Intent(cyclesEditor.this, workoutEditor.class);
+        workoutPage.putExtra("workout",originWorkout);
+        startActivity(workoutPage);
         finish();
     }
 
     public void saveCycle(View v){
-
+        saveName();
+        Intent workoutPage = new Intent(cyclesEditor.this, workoutEditor.class);
+        workoutPage.putExtra("workout",workout);
+        startActivity(workoutPage);
+        finish();
     }
 
     public void addNumber(View v){
@@ -46,10 +89,17 @@ public class cyclesEditor extends AppCompatActivity {
     }
 
     public void subtractNumber(View v){
-        if(numberOfCycle > 0){
+        if(numberOfCycle > 1){
             numberOfCycle -=1;
         }
         cycleNum.setText(String.valueOf(numberOfCycle));
+    }
+
+    private void saveName(){
+        ArrayList<Cycle> cycleList = workout.getCycles();
+        cycle.setName(cycleName.getText().toString());
+        cycleList.set(cycleIndex,cycle);
+        workout.setCycles(cycleList);
     }
 
 
