@@ -44,6 +44,7 @@ public class SelectWorkout extends AppCompatActivity {
   public void openWorkout(View v) {
     Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
 
+    gotoWorkout.putExtra("com.example.workouttracker.workout", "workoutDataHere");
     startActivity(gotoWorkout);
   }
 
