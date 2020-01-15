@@ -57,26 +57,10 @@ public class WorkoutDescription extends AppCompatActivity {
     Object workoutDataDefault = intent.getStringExtra("com.example.workouttracker.workout");
 
     //somehow get the workout object itself from whatever workoutData is
-    Workout workoutData = makeSampleWorkout();
+    final Workout workoutData = makeSampleWorkout();
 
     //edit this to properly put in names and such
-    RecyclerView.Adapter adapter = new RecyclerView.Adapter() {
-      @NonNull
-      @Override
-      public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
-      }
-
-      @Override
-      public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-      }
-
-      @Override
-      public int getItemCount() {
-        return 0;
-      }
-    };
+    //put somethign here
 
     recyclerView.setAdapter(adapter);
   }
