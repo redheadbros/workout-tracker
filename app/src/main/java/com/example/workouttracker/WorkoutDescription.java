@@ -9,14 +9,19 @@ import com.example.workouttracker.datastructure.Workout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
 public class WorkoutDescription extends AppCompatActivity {
+
+  RecyclerView recyclerView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,9 @@ public class WorkoutDescription extends AppCompatActivity {
       }
     });
 
+    recyclerView = (RecyclerView) findViewById(R.id.description_recycler_view);
+
+
     //setup description
     Intent intent = getIntent();
     //replace this with 'workoutData' when you can actually pass it
@@ -50,6 +58,27 @@ public class WorkoutDescription extends AppCompatActivity {
 
     //somehow get the workout object itself from whatever workoutData is
     Workout workoutData = makeSampleWorkout();
+
+    //edit this to properly put in names and such
+    RecyclerView.Adapter adapter = new RecyclerView.Adapter() {
+      @NonNull
+      @Override
+      public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+      }
+
+      @Override
+      public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+      }
+
+      @Override
+      public int getItemCount() {
+        return 0;
+      }
+    };
+
+    recyclerView.setAdapter(adapter);
   }
 
   private Workout makeSampleWorkout() {
