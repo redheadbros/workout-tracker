@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
@@ -21,7 +22,9 @@ import java.util.ArrayList;
 
 public class WorkoutDescription extends AppCompatActivity {
 
-  RecyclerView recyclerView;
+  private RecyclerView recyclerView;
+  private RecyclerView.Adapter adapter;
+  private RecyclerView.LayoutManager layoutManager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +51,10 @@ public class WorkoutDescription extends AppCompatActivity {
       }
     });
 
-    recyclerView = (RecyclerView) findViewById(R.id.description_recycler_view);
-
+    //prepare the recycler view
+    recyclerView = findViewById(R.id.description_recycler_view);
+    layoutManager = new LinearLayoutManager(this);
+    recyclerView.setLayoutManager(layoutManager);
 
     //setup description
     Intent intent = getIntent();
@@ -61,6 +66,7 @@ public class WorkoutDescription extends AppCompatActivity {
 
     //edit this to properly put in names and such
     //put somethign here
+    adapter = new DescriptionAdapter(workoutData);
 
     recyclerView.setAdapter(adapter);
   }
