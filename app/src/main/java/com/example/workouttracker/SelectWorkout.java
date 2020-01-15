@@ -3,6 +3,7 @@ package com.example.workouttracker;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.workouttracker.datastructure.Workout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -44,6 +45,7 @@ public class SelectWorkout extends AppCompatActivity {
   public void openWorkout(View v) {
     Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
 
+    gotoWorkout.putExtra("com.example.workouttracker.workout", "workoutDataHere");
     startActivity(gotoWorkout);
   }
 
