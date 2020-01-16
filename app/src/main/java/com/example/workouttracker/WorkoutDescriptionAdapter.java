@@ -5,7 +5,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.workouttracker.datastructure.Cycle;
 import com.example.workouttracker.datastructure.Workout;
@@ -38,22 +40,34 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
   public WorkoutDescriptionAdapter.CycleViewHolder onCreateViewHolder(ViewGroup parent,
                                                                       int viewType) {
     //create TextView (or other view) for CycleViewHolder
-    LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
+    LinearLayout linearLayout = (LinearLayout) LayoutInflater.from(parent.getContext())
         .inflate(R.layout.cycle_description_view, parent, false);
 
-    CycleViewHolder holder = new CycleViewHolder(v);
+    CycleViewHolder holder = new CycleViewHolder(linearLayout);
     return holder;
   }
 
   @Override
   public void onBindViewHolder(CycleViewHolder holder, int position) {
-    String text = cycles.get(position).getName();
+
+    //setup cycle title
+    Cycle cycle = cycles.get(position)
+    String text = cycle.getName();
     TextView textView = (TextView) holder.linearLayout.getChildAt(0);
     textView.setText(text);
+
+    //setup exercise list
+    //TODO: figure out how to get a proper context what the heck is this
+    RecyclerView recyclerView = (RecyclerView) holder.linearLayout.getChildAt(1);
+    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+    recyclerView.setLayoutManager(layoutManager);
+
+    CycleDescriptionAdapter adapter = new CycleDescriptionAdapter(cycle);
+    recyclerView.setAdapter(adapter);
   }
 
   @Override
   public int getItemCount() {
-    return workout.getCycles().size();
+    return cycles.size();
   }
 }
