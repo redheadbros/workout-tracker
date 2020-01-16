@@ -23,14 +23,20 @@
             android:orientation="vertical" >
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="upper arm cycle" />
+                android:text="upper arm cycle"
+                android:background="@drawable/custombutton"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"/>
 
             <Button
                 android:id="@+id/lower"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custombutton"
+                android:layout_gravity="center"
                 android:text="lower leg cycle" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

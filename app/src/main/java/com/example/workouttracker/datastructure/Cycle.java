@@ -1,8 +1,9 @@
 package com.example.workouttracker.datastructure;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cycle {
+public class Cycle implements Serializable {
     private String name;
     private ArrayList<Exercise> exercises;
     private int cycleReptations;
@@ -10,7 +11,7 @@ public class Cycle {
     public Cycle(){
         name = "";
         exercises = new ArrayList<>();
-        cycleReptations = 0;
+        cycleReptations = 1;
     }
 
     public Cycle(String name, ArrayList<Exercise> exercises, int cycleReptations){

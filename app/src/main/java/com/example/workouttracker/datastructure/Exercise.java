@@ -1,6 +1,8 @@
 package com.example.workouttracker.datastructure;
 
-public class Exercise {
+import java.io.Serializable;
+
+public class Exercise implements Serializable {
     private String name;
     private String description;
     private int sets;
@@ -8,7 +10,13 @@ public class Exercise {
     public Exercise(){
         name = "";
         description = "";
-        sets = 0;
+        sets = 1;
+    }
+
+    public Exercise(String name, String description, int sets){
+        this.name = name;
+        this.description = description;
+        this.sets = sets;
     }
 
     public void setName(String name){
