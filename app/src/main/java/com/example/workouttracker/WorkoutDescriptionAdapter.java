@@ -2,6 +2,7 @@ package com.example.workouttracker;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +20,11 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
 
   //contains class for holding views for part of the description
   public static class CycleViewHolder extends RecyclerView.ViewHolder {
-    public TextView textView;
+    public LinearLayout linearLayout;
 
-    public CycleViewHolder(TextView v) {
+    public CycleViewHolder(LinearLayout v) {
       super(v);
-      textView = v;
+      linearLayout = v;
     }
   }
 
@@ -37,7 +38,7 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
   public WorkoutDescriptionAdapter.CycleViewHolder onCreateViewHolder(ViewGroup parent,
                                                                       int viewType) {
     //create TextView (or other view) for CycleViewHolder
-    TextView v = (TextView) LayoutInflater.from(parent.getContext())
+    LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
         .inflate(R.layout.cycle_description_view, parent, false);
 
     CycleViewHolder holder = new CycleViewHolder(v);
@@ -47,7 +48,8 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
   @Override
   public void onBindViewHolder(CycleViewHolder holder, int position) {
     String text = cycles.get(position).getName();
-    holder.textView.setText(text);
+    TextView textView = (TextView) holder.linearLayout.getChildAt(0);
+    textView.setText(text);
   }
 
   @Override
