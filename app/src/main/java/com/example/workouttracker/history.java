@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.example.workouttracker.R;
+import com.example.workouttracker.datastructure.HistoryData;
+import com.example.workouttracker.datastructure.Json;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,4 +82,5 @@ public class history extends AppCompatActivity {
         listView.setAdapter(adapter);
 
     }
+
 }
