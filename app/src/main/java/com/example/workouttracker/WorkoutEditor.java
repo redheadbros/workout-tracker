@@ -3,16 +3,16 @@ package com.example.workouttracker;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.workouttracker.datastructure.Json;
 import com.example.workouttracker.datastructure.Workout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.workouttracker.datastructure.WorkoutList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class workoutEditor extends AppCompatActivity {
+public class WorkoutEditor extends AppCompatActivity {
 
     private Workout workout;
 
@@ -35,23 +35,35 @@ public class workoutEditor extends AppCompatActivity {
 
 
     public void goback(View v){
-        Intent mainScreen = new Intent(workoutEditor.this, SelectWorkout.class);
+        Intent mainScreen = new Intent(WorkoutEditor.this, SelectWorkout.class);
         startActivity(mainScreen);
         finish();
     }
 
     public void newCycle(View v){
-        Intent newCycle = new Intent(workoutEditor.this, cyclesEditor.class);
+        Intent newCycle = new Intent(WorkoutEditor.this, CyclesEditor.class);
         newCycle.putExtra("workout",workout);
         newCycle.putExtra("cycleIndex",workout.getCycles().size());
         startActivity(newCycle);
     }
 
     public void editCycle(View v, int cycleIndex){
-        Intent editCycle = new Intent(workoutEditor.this, cyclesEditor.class);
+        Intent editCycle = new Intent(WorkoutEditor.this, CyclesEditor.class);
         editCycle.putExtra("workout",workout);
         editCycle.putExtra("cycleIndex",cycleIndex);
         startActivity(editCycle);
+    }
+
+    public void saveWorkout(View v){
+        WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT,json");
+        if(workoutList == null){
+            workoutList = new WorkoutList();
+        }
+        workoutList.addWorkout(workout);
+        Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT,json");
+        Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
+        startActivity(mainScreen);
+        finish();
     }
 
 }

@@ -43,7 +43,7 @@ public class WorkoutDescription extends AppCompatActivity {
     fab2.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent gotoWorkoutEditior = new Intent(WorkoutDescription.this, workoutEditor.class);
+        Intent gotoWorkoutEditior = new Intent(WorkoutDescription.this, WorkoutEditor.class);
         startActivity(gotoWorkoutEditior);
       }
     });

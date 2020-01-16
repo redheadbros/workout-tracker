@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".history"></activity>
+        <activity android:name=".History"></activity>
         <activity
-            android:name=".workoutEditor"
+            android:name=".WorkoutEditor"
             android:label="@string/title_activity_workout_editor"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".cyclesEditor"
+            android:name=".CyclesEditor"
             android:label="@string/title_activity_cycles_editor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".exerciseEditor"
+            android:name=".ExerciseEditor"
             android:label="@string/title_activity_exercise_editior"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
