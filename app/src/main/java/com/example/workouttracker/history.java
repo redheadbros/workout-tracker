@@ -11,6 +11,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.text.SimpleDateFormat;
+import com.example.workouttracker.R;
+import com.example.workouttracker.datastructure.HistoryData;
+import com.example.workouttracker.datastructure.Json;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;

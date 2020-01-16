@@ -108,11 +108,9 @@
         android:id="@+id/saveButton"
         android:layout_width="62dp"
         android:layout_height="54dp"
-        android:onClick="goback"
+        android:onClick="saveWorkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/include4"
-        app:layout_constraintHorizontal_bias="0.979"
-        app:layout_constraintStart_toStartOf="@+id/include4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_save_black_24dp" />
