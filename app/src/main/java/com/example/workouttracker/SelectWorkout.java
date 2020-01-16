@@ -55,4 +55,6 @@ public class SelectWorkout extends AppCompatActivity {
     Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, WorkoutEditor.class);
     startActivity(gotoWorkoutEditior);
   }
+
+
 }

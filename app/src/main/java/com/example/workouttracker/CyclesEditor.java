@@ -25,6 +25,7 @@ public class CyclesEditor extends AppCompatActivity {
     TextView cycleNum;
     EditText cycleName;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
