@@ -1,5 +1,6 @@
 package com.example.workouttracker;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
 
   private Workout workout;
   private ArrayList<Cycle> cycles;
+  private Context context;
 
   //contains class for holding views for part of the description
   public static class CycleViewHolder extends RecyclerView.ViewHolder {
@@ -32,7 +34,8 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
   }
 
   //constructor, here.
-  public WorkoutDescriptionAdapter(Workout toDisplay) {
+  public WorkoutDescriptionAdapter(Context activityContext, Workout toDisplay) {
+    context = activityContext;
     workout = toDisplay;
     cycles = workout.getCycles();
   }
@@ -60,7 +63,8 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
     //setup exercise list
     ListView exerciseList = (ListView) holder.linearLayout.getChildAt(1);
 
-    CycleDescriptionAdapter adapter = new CycleDescriptionAdapter(cycle.getExercises());
+    CycleDescriptionAdapter adapter = new CycleDescriptionAdapter(context,
+        R.layout.exercise_description_view, cycle.getExercises());
     exerciseList.setAdapter(adapter);
   }
 

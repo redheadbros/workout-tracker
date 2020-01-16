@@ -63,7 +63,7 @@ public class WorkoutDescription extends AppCompatActivity {
 
     //edit this to properly put in names and such
     //put somethign here
-    adapter = new WorkoutDescriptionAdapter(workoutData);
+    adapter = new WorkoutDescriptionAdapter(this, workoutData);
 
     recyclerView.setAdapter(adapter);
   }
