@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class exerciseEditor extends AppCompatActivity{
+public class ExerciseEditor extends AppCompatActivity{
 
     private int numberOfSets;
     private int exerciseIndex;
@@ -66,7 +66,7 @@ public class exerciseEditor extends AppCompatActivity{
         ArrayList<Cycle> cycleList = workout.getCycles();
         cycleList.set(cycleIndex,cycle);
         workout.setCycles(cycleList);
-        Intent cycleEditor = new Intent(exerciseEditor.this, cyclesEditor.class);
+        Intent cycleEditor = new Intent(ExerciseEditor.this, CyclesEditor.class);
         cycleEditor.putExtra("workout",workout);
         cycleEditor.putExtra("cycleIndex",cycleIndex);
         startActivity(cycleEditor);

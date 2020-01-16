@@ -6,14 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
-import com.example.workouttracker.R;
-import com.example.workouttracker.datastructure.HistoryData;
-import com.example.workouttracker.datastructure.Json;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class history extends AppCompatActivity {
+public class History extends AppCompatActivity {
     ListView listView;
     private ImageView imageView;
     @Override
@@ -73,7 +68,7 @@ public class history extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(history.this, WorkoutDescription.class);
+                    Intent intent = new Intent(History.this, WorkoutDescription.class);
                     startActivity(intent);
                 }
             });

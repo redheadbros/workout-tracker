@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -35,7 +34,7 @@ public class SelectWorkout extends AppCompatActivity {
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, workoutEditor.class);
+        Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, WorkoutEditor.class);
         startActivity(gotoWorkoutEditior);
       }
     });
@@ -48,12 +47,12 @@ public class SelectWorkout extends AppCompatActivity {
   }
 
   public void openhistory(){
-    Intent intent = new Intent(SelectWorkout.this, history.class);
+    Intent intent = new Intent(SelectWorkout.this, History.class);
     startActivity(intent);
   }
 
   public void newWorkout(View v){
-    Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, workoutEditor.class);
+    Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, WorkoutEditor.class);
     startActivity(gotoWorkoutEditior);
   }
 }
