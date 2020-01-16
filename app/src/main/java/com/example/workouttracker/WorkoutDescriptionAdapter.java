@@ -3,6 +3,7 @@ package com.example.workouttracker;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -51,19 +52,16 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
   public void onBindViewHolder(CycleViewHolder holder, int position) {
 
     //setup cycle title
-    Cycle cycle = cycles.get(position)
+    Cycle cycle = cycles.get(position);
     String text = cycle.getName();
     TextView textView = (TextView) holder.linearLayout.getChildAt(0);
     textView.setText(text);
 
     //setup exercise list
-    //TODO: figure out how to get a proper context what the heck is this
-    RecyclerView recyclerView = (RecyclerView) holder.linearLayout.getChildAt(1);
-    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-    recyclerView.setLayoutManager(layoutManager);
+    ListView exerciseList = (ListView) holder.linearLayout.getChildAt(1);
 
-    CycleDescriptionAdapter adapter = new CycleDescriptionAdapter(cycle);
-    recyclerView.setAdapter(adapter);
+    CycleDescriptionAdapter adapter = new CycleDescriptionAdapter(cycle.getExercises());
+    exerciseList.setAdapter(adapter);
   }
 
   @Override

@@ -1,54 +1,29 @@
 package com.example.workouttracker;
 
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.workouttracker.datastructure.Cycle;
 import com.example.workouttracker.datastructure.Exercise;
 
 import java.util.ArrayList;
 
-public class CycleDescriptionAdapter extends RecyclerView.Adapter<CycleDescriptionAdapter.ExerciseViewHolder> {
+public class CycleDescriptionAdapter extends ArrayAdapter<Exercise> {
 
-  private Cycle cycle;
   private ArrayList<Exercise> exercises;
 
-  public static class ExerciseViewHolder extends RecyclerView.ViewHolder {
-    public TextView textView;
-
-    public ExerciseViewHolder(TextView v) {
-      super(v);
-      textView = v;
-    }
-  }
-
-  public CycleDescriptionAdapter(Cycle toDisplay) {
-    cycle = toDisplay;
-    exercises = cycle.getExercises();
+  public CycleDescriptionAdapter(Context context, int resource, ArrayList<Exercise> exerciseList) {
+    super(context, resource, exerciseList);
+    exercises = exerciseList;
   }
 
   @Override
-  public CycleDescriptionAdapter.ExerciseViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                      int viewType) {
-    TextView v = (TextView) LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.exercise_description_view, parent, false);
+  public View getView(int position, View convertView, ViewGroup container) {
 
-    //create an exercise view holder
-    CycleDescriptionAdapter.ExerciseViewHolder holder = new ExerciseViewHolder(v);
-    return holder;
-  }
-
-  @Override
-  public void onBindViewHolder(ExerciseViewHolder holder, int position) {
-    String text = exercises.get(position).getName();
-    holder.textView.setText(text);
-  }
-
-  @Override
-  public int getItemCount() {
-    return exercises.size();
   }
 }
