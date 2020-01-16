@@ -7,16 +7,13 @@ import com.example.workouttracker.datastructure.Cycle;
 import com.example.workouttracker.datastructure.Exercise;
 import com.example.workouttracker.datastructure.Workout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
@@ -66,7 +63,7 @@ public class WorkoutDescription extends AppCompatActivity {
 
     //edit this to properly put in names and such
     //put somethign here
-    adapter = new DescriptionAdapter(workoutData);
+    adapter = new WorkoutDescriptionAdapter(workoutData);
 
     recyclerView.setAdapter(adapter);
   }

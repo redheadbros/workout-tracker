@@ -12,7 +12,10 @@ import com.example.workouttracker.datastructure.Workout;
 import java.util.ArrayList;
 
 
-public class DescriptionAdapter extends RecyclerView.Adapter<DescriptionAdapter.CycleViewHolder> {
+public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescriptionAdapter.CycleViewHolder> {
+
+  private Workout workout;
+  private ArrayList<Cycle> cycles;
 
   //contains class for holding views for part of the description
   public static class CycleViewHolder extends RecyclerView.ViewHolder {
@@ -24,16 +27,15 @@ public class DescriptionAdapter extends RecyclerView.Adapter<DescriptionAdapter.
     }
   }
 
-  private Workout workout;
-
   //constructor, here.
-  public DescriptionAdapter(Workout toDisplay) {
+  public WorkoutDescriptionAdapter(Workout toDisplay) {
     workout = toDisplay;
+    cycles = workout.getCycles();
   }
 
   @Override
-  public DescriptionAdapter.CycleViewHolder onCreateViewHolder(ViewGroup parent,
-                                                               int viewType) {
+  public WorkoutDescriptionAdapter.CycleViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                      int viewType) {
     //create TextView (or other view) for CycleViewHolder
     TextView v = (TextView) LayoutInflater.from(parent.getContext())
         .inflate(R.layout.cycle_description_view, parent, false);
@@ -44,7 +46,6 @@ public class DescriptionAdapter extends RecyclerView.Adapter<DescriptionAdapter.
 
   @Override
   public void onBindViewHolder(CycleViewHolder holder, int position) {
-    ArrayList<Cycle> cycles = workout.getCycles();
     String text = cycles.get(position).getName();
     holder.textView.setText(text);
   }
