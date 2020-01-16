@@ -42,9 +42,14 @@ public class CycleDescriptionAdapter extends ArrayAdapter<Exercise> {
     //insert into View
     TextView titleView = (TextView) linearLayout.getChildAt(EXERCISE_TITLE_INDEX);
     TextView descriptionView = (TextView) linearLayout.getChildAt(EXERCISE_DESCRIPTION_INDEX);
-    titleView.setText(exerciseTitle);
-    descriptionView.setText(exerciseDescription);
+    titleView.setText("  " + exerciseTitle);
+    descriptionView.setText("    " + exerciseDescription);
 
     return linearLayout;
+  }
+
+  @Override
+  public int getCount() {
+    return exercises.size();
   }
 }
