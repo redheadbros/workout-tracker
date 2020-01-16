@@ -55,12 +55,12 @@ public class WorkoutEditor extends AppCompatActivity {
     }
 
     public void saveWorkout(View v){
-        WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT,json");
+        WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
         if(workoutList == null){
             workoutList = new WorkoutList();
         }
         workoutList.addWorkout(workout);
-        Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT,json");
+        Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
         Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
         startActivity(mainScreen);
         finish();

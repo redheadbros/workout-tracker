@@ -46,7 +46,7 @@ public class CyclesEditor extends AppCompatActivity {
         setSupportActionBar(toolbar);
         cycleNum = findViewById(R.id.numOfCycles);
         cycleName = findViewById(R.id.NameOfCycle);
-        numberOfCycle = cycle.getCycleReptations();
+        numberOfCycle = cycle.getCycleRepetitions();
         cycleNum.setText(String.valueOf(numberOfCycle));
     }
 
