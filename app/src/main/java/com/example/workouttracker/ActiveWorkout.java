@@ -38,12 +38,12 @@ public class ActiveWorkout extends AppCompatActivity {
   }
 
   public void saveHistory(View v){
-    HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class, "HISTORY,json");
+    HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class, "HISTORY.json");
     if(historyData == null){
       historyData = new HistoryData();
     }
     historyData.addHistory(record);
-    Json.saveToJson(getApplicationContext(), historyData, "HISTORY,json");
+    Json.saveToJson(getApplicationContext(), historyData, "HISTORY.json");
   }
 
 }
