@@ -13,27 +13,5 @@
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/buttonl"
-        android:layout_width="300dp"
-        android:layout_height="59dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/custombutton"
-        android:text="Leg Day"
-        android:onClick="openWorkout"
-        android:textAllCaps="false"
-        android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/buttong"
-        android:layout_width="300dp"
-        android:layout_height="59dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/custombutton"
-        android:text="General Strength"
-        android:onClick="openWorkout"
-        android:textAllCaps="false"
-        android:textSize="20sp" />
 </androidx.core.widget.NestedScrollView>
