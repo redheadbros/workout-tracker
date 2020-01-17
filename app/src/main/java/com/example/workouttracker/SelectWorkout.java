@@ -77,7 +77,7 @@ public class SelectWorkout extends AppCompatActivity {
   }
 
   public void openhistory(){
-    Intent intent = new Intent(SelectWorkout.this, History.class);
+    Intent intent = new Intent(SelectWorkout.this, history.class);
     startActivity(intent);
   }
 
