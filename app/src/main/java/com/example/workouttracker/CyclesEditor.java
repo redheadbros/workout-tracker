@@ -34,7 +34,6 @@ public class CyclesEditor extends AppCompatActivity {
         cycleIndex = (int)(dataReceiver.getSerializableExtra("cycleIndex"));
         originWorkout = workout;
         if(cycleIndex == workout.getCycles().size()){
-            originWorkout = workout;
             ArrayList<Cycle> cycles = workout.getCycles();
             cycles.add(cycle);
             workout.setCycles(cycles);
@@ -101,6 +100,16 @@ public class CyclesEditor extends AppCompatActivity {
         cycle.setName(cycleName.getText().toString());
         cycleList.set(cycleIndex,cycle);
         workout.setCycles(cycleList);
+    }
+
+    private void deleteCycle(View v){
+        ArrayList<Cycle> cycleList = workout.getCycles();
+        cycleList.remove(cycleIndex);
+        workout.setCycles(cycleList);
+        Intent workoutPage = new Intent(CyclesEditor.this, WorkoutEditor.class);
+        workoutPage.putExtra("workout",workout);
+        startActivity(workoutPage);
+        finish();
     }
 
 

@@ -13,6 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class WorkoutEditor extends AppCompatActivity {
 
     private Workout workout;
@@ -65,6 +67,22 @@ public class WorkoutEditor extends AppCompatActivity {
         }
         workoutList.addWorkout(workout);
         Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
+        Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
+        startActivity(mainScreen);
+        finish();
+    }
+
+    public void deleteWorkout(View v){
+        Intent workoutData = getIntent();
+        Bundle extras = workoutData.getExtras();
+        if(extras != null){
+            int index = (int)workoutData.getSerializableExtra("index");
+            WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
+            ArrayList<Workout> workoutArray = workoutList.getWorkoutList();
+            workoutArray.remove(index);
+            workoutList.setWorkoutList(workoutArray);
+            Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
+        }
         Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
         startActivity(mainScreen);
         finish();
