@@ -44,6 +44,8 @@ public class SelectWorkoutAdapter extends RecyclerView.Adapter<SelectWorkoutAdap
 
   public void onBindViewHolder(WorkoutButtonViewHolder holder, final int position) {
 
+    holder.button.setText(workouts.get(position).getName());
+
     holder.button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

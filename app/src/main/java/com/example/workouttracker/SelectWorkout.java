@@ -11,6 +11,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.Button;
@@ -27,14 +29,6 @@ public class SelectWorkout extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_select_workout);
 
-    button = (Button)findViewById(R.id.buttonh);
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        openhistory();
-      }
-    });
-
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
@@ -48,6 +42,13 @@ public class SelectWorkout extends AppCompatActivity {
     });
 
     workouts = getSampleWorkoutList();
+
+    RecyclerView recyclerView = findViewById(R.id.select_workout_recycler_view);
+    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+    recyclerView.setLayoutManager(layoutManager);
+
+    SelectWorkoutAdapter adapter = new SelectWorkoutAdapter(this, getSampleWorkoutList());
+    recyclerView.setAdapter(adapter);
   }
 
   public void openWorkout1(View v) {
