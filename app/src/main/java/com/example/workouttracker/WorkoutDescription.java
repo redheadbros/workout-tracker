@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class WorkoutDescription extends AppCompatActivity {
@@ -58,14 +59,14 @@ public class WorkoutDescription extends AppCompatActivity {
     //setup description
     Intent intent = getIntent();
     //replace this with 'workoutData' when you can actually pass it
-    Object workoutDataDefault = intent.getStringExtra("com.example.workouttracker.workout");
+    Serializable workoutData = intent.getSerializableExtra("workout");
 
     //somehow get the workout object itself from whatever workoutData is
-    final Workout workoutData = makeSampleWorkout();
+    //final Workout workoutData = makeSampleWorkout();
 
     //edit this to properly put in names and such
     //put somethign here
-    adapter = new WorkoutDescriptionAdapter(this, workoutData);
+    adapter = new WorkoutDescriptionAdapter(this, (Workout) workoutData);
 
     recyclerView.setAdapter(adapter);
   }

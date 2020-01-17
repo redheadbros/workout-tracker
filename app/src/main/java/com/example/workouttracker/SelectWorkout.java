@@ -11,11 +11,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class SelectWorkout extends AppCompatActivity {
@@ -50,17 +53,31 @@ public class SelectWorkout extends AppCompatActivity {
     });
 
     workouts = getSampleWorkoutList();
+
+    RecyclerView recyclerView = findViewById(R.id.select_workout_recycler_view);
+    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+    recyclerView.setLayoutManager(layoutManager);
+
+    SelectWorkoutAdapter adapter = new SelectWorkoutAdapter(this, getSampleWorkoutList());
+    recyclerView.setAdapter(adapter);
   }
 
-  public void openWorkout(View v) {
+  public void openWorkout1(View v) {
     Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
 
-    gotoWorkout.putExtra("com.example.workouttracker.workout", "workoutDataHere");
+    gotoWorkout.putExtra("workout", workouts.getWorkoutList().get(0));
+    startActivity(gotoWorkout);
+  }
+
+  public void openWorkout2(View v) {
+    Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
+
+    gotoWorkout.putExtra("workout", workouts.getWorkoutList().get(1));
     startActivity(gotoWorkout);
   }
 
   public void openhistory(){
-    Intent intent = new Intent(SelectWorkout.this, history.class);
+    Intent intent = new Intent(SelectWorkout.this, History.class);
     startActivity(intent);
   }
 
@@ -85,7 +102,7 @@ public class SelectWorkout extends AppCompatActivity {
     exercises2.add(e2);
     Cycle c2 = new Cycle("Tuff dude time", exercises2, 421);
     ArrayList<Cycle> cycles2 = new ArrayList<>();
-    cycles1.add(c2);
+    cycles2.add(c2);
 
     //by your powers combined
     Workout w1 = new Workout("Test workout 1", cycles1);
