@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.workouttracker.datastructure.Cycle;
 import com.example.workouttracker.datastructure.Exercise;
+import com.example.workouttracker.datastructure.Json;
 import com.example.workouttracker.datastructure.Workout;
 import com.example.workouttracker.datastructure.WorkoutList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,7 +37,7 @@ public class SelectWorkout extends AppCompatActivity {
     imageView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        openhistory();
+        openHistory();
       }
     });
 
@@ -52,7 +53,11 @@ public class SelectWorkout extends AppCompatActivity {
       }
     });
 
-    workouts = getSampleWorkoutList();
+    //workouts = getSampleWorkoutList();
+    workouts = Json.loadFromJson(getApplicationContext(),WorkoutList.class,"WORKOUT.json");
+    if(workouts == null){
+      workouts = new WorkoutList();
+    }
 
     RecyclerView recyclerView = findViewById(R.id.select_workout_recycler_view);
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -62,28 +67,14 @@ public class SelectWorkout extends AppCompatActivity {
     recyclerView.setAdapter(adapter);
   }
 
-  public void openWorkout1(View v) {
-    Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
-
-    gotoWorkout.putExtra("workout", workouts.getWorkoutList().get(0));
-    startActivity(gotoWorkout);
-  }
-
-  public void openWorkout2(View v) {
-    Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
-
-    gotoWorkout.putExtra("workout", workouts.getWorkoutList().get(1));
-    startActivity(gotoWorkout);
-  }
-
-  public void openhistory(){
+  public void openHistory(){
     Intent intent = new Intent(SelectWorkout.this, History.class);
     startActivity(intent);
   }
 
   public void newWorkout(View v){
-    Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, WorkoutEditor.class);
-    startActivity(gotoWorkoutEditior);
+    Intent gotoWorkoutEditor = new Intent(SelectWorkout.this, WorkoutEditor.class);
+    startActivity(gotoWorkoutEditor);
   }
 
 
