@@ -15,11 +15,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#E53535"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_active_workout" />
+    <include
+        layout="@layout/content_active_workout"
+        android:layout_height="645dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

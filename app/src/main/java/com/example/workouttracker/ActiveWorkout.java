@@ -15,6 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
+import java.util.Date;
+
 public class ActiveWorkout extends AppCompatActivity {
   private Workout workout;
   private Record record = new Record();
@@ -33,11 +35,12 @@ public class ActiveWorkout extends AppCompatActivity {
     //startActivity(gotoDescription);
 
     record.setRecord(workout);
+    saveHistory();
 
     finish();
   }
 
-  public void saveHistory(View v){
+  public void saveHistory(){
     HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class, "HISTORY,json");
     if(historyData == null){
       historyData = new HistoryData();
@@ -45,5 +48,7 @@ public class ActiveWorkout extends AppCompatActivity {
     historyData.addHistory(record);
     Json.saveToJson(getApplicationContext(), historyData, "HISTORY,json");
   }
+
+
 
 }

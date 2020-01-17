@@ -6,31 +6,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
-import java.text.SimpleDateFormat;
-import com.example.workouttracker.R;
 import com.example.workouttracker.datastructure.HistoryData;
 import com.example.workouttracker.datastructure.Json;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class history extends AppCompatActivity {
     ListView listView;
-    private ImageView imageView;
+    ImageView imageView;
+    ArrayList<String> dateList = new ArrayList<String>();
+    ArrayAdapter<String> adapter;
+    private ActiveWorkout activeWorkout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        generateAllDate();
+
         setContentView(R.layout.activity_history);
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        activeWorkout = new ActiveWorkout();
+
+        dateList = new ArrayList<String>();
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dateList);
+
+
+
+
+
+
+
 
 
         imageView = (ImageView)findViewById(R.id.imageView);
@@ -43,38 +54,55 @@ public class history extends AppCompatActivity {
         });
 
         listView = (ListView)findViewById(R.id.listview);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                openWorkoutDescription();
 
-        HashMap<String, String> dateWorkout = new HashMap<>();
-        dateWorkout.put((simpleDateFormat.format(date)),"Leg Day");
-
-
-
-        List<HashMap<String, String>> listItems = new ArrayList<>();
-        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_view,
-                new String[] {"First Line", "Second Line"},
-                new int[]{R.id.textview1, R.id.textview2});
-        Iterator It = dateWorkout.entrySet().iterator();
-        while (It.hasNext()){
-            HashMap<String, String> resultsMap = new HashMap<>();
-            Map.Entry pair = (Map.Entry) It.next();
-            resultsMap.put("First Line", pair.getKey().toString());
-            resultsMap.put("Second Line", pair.getValue().toString());
-            listItems.add(resultsMap);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(history.this, WorkoutDescription.class);
-                    startActivity(intent);
-                }
-            });
-        }
+            }
+        });
 
         listView.setAdapter(adapter);
+
+
+
+
+
+
 
     }
     public void openSelectWorkout() {
         Intent intent = new Intent(this, SelectWorkout.class);
         startActivity(intent);
     }
+
+    public void generateAllDate(){
+        HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY,json");
+        if(historyData == null){
+            return;
+        }
+        int index = 0;
+        while(index < historyData.getHistoryList().size()){
+            Date date = historyData.getDate(index);
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+            String strDate = dateFormat.format(date);
+            dateList.add(strDate);
+        }
+    }
+
+    public void openWorkoutDescription(){
+        HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class, "HISTORY,json");
+        if (historyData == null){
+            return;
+
+        }
+        ;
+
+    }
+    public void getWorkout(){
+
+    }
+
+
+
 }
