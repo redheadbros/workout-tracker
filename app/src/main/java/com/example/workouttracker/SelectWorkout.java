@@ -41,8 +41,8 @@ public class SelectWorkout extends AppCompatActivity {
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent gotoWorkoutEditior = new Intent(SelectWorkout.this, WorkoutEditor.class);
-        startActivity(gotoWorkoutEditior);
+        Intent gotoWorkoutEditor = new Intent(SelectWorkout.this, WorkoutEditor.class);
+        startActivity(gotoWorkoutEditor);
       }
     });
 
