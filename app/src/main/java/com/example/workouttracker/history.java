@@ -110,9 +110,7 @@ public class history extends AppCompatActivity {
     public void openWorkoutDescription(){
         generateAllWorkout();
     }
-    public void getWorkout(){
 
-    }
 
 
 
