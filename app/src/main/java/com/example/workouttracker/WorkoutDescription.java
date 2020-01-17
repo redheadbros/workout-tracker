@@ -57,7 +57,7 @@ public class WorkoutDescription extends AppCompatActivity {
     //setup description
     Intent intent = getIntent();
     //replace this with 'workoutData' when you can actually pass it
-    Serializable workoutData = intent.getStringExtra("workout");
+    Serializable workoutData = intent.getSerializableExtra("workout");
 
     //somehow get the workout object itself from whatever workoutData is
     //final Workout workoutData = makeSampleWorkout();

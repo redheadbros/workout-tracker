@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class SelectWorkout extends AppCompatActivity {
@@ -49,10 +50,17 @@ public class SelectWorkout extends AppCompatActivity {
     workouts = getSampleWorkoutList();
   }
 
-  public void openWorkout(View v) {
+  public void openWorkout1(View v) {
     Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
 
-    gotoWorkout.putExtra("com.example.workouttracker.workout", "workoutDataHere");
+    gotoWorkout.putExtra("workout", workouts.getWorkoutList().get(0));
+    startActivity(gotoWorkout);
+  }
+
+  public void openWorkout2(View v) {
+    Intent gotoWorkout = new Intent(SelectWorkout.this, WorkoutDescription.class);
+
+    gotoWorkout.putExtra("workout", workouts.getWorkoutList().get(1));
     startActivity(gotoWorkout);
   }
 
@@ -82,7 +90,7 @@ public class SelectWorkout extends AppCompatActivity {
     exercises2.add(e2);
     Cycle c2 = new Cycle("Tuff dude time", exercises2, 421);
     ArrayList<Cycle> cycles2 = new ArrayList<>();
-    cycles1.add(c2);
+    cycles2.add(c2);
 
     //by your powers combined
     Workout w1 = new Workout("Test workout 1", cycles1);
