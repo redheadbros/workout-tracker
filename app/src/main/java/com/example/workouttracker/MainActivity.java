@@ -67,7 +67,7 @@ private Button button;
   }
 
 public void openhistory(){
-  Intent intent = new Intent(this, history.class);
+  Intent intent = new Intent(this, History.class);
   startActivity(intent);
 }
 
