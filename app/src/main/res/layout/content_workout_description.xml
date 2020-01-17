@@ -8,14 +8,11 @@
     tools:context=".WorkoutDescription"
     tools:showIn="@layout/activity_workout_description">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/description_recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="@string/workout_details"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

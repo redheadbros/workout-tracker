@@ -22,6 +22,10 @@ public class HistoryData {
         this.historyList = historyList;
     }
 
+    public ArrayList<Record> getHistoryList() {
+        return historyList;
+    }
+
     public Workout getWorkout(int index){
         return historyList.get(index).getWorkout();
     }

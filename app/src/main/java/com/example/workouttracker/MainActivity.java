@@ -22,7 +22,7 @@ private Button button;
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    button = (Button) findViewById(R.id.button2);
+    button = (Button) findViewById(R.id.button_l);
     button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -67,7 +67,7 @@ private Button button;
   }
 
 public void openhistory(){
-  Intent intent = new Intent(this, History.class);
+  Intent intent = new Intent(this, history.class);
   startActivity(intent);
 }
 

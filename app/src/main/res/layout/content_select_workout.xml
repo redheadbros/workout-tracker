@@ -13,24 +13,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="openWorkout"
-            android:text="@string/workout_1" />
+
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/buttonl"
+            android:layout_width="300dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custombutton"
+            android:text="Leg Day"
             android:onClick="openWorkout"
-            android:text="@string/workout_2" />
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
         <Button
-            android:id="@+id/buttonh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HISTORY" />
+            android:id="@+id/buttong"
+            android:layout_width="300dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custombutton"
+            android:text="General Strength"
+            android:onClick="openWorkout"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
+
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

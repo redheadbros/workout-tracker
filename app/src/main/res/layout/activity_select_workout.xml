@@ -11,6 +11,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
+        android:background="#E53935"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -36,29 +37,24 @@
     <include layout="@layout/content_select_workout" />
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="@dimen/fab_margin"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="95dp"
+        android:layout_height="63dp"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="16dp"
         android:onClick="newWorkout"
-        app:srcCompat="@android:drawable/ic_input_add" />
 
-    <TextView
-        android:id="@+id/NameOfAllWorkout"
-        android:layout_width="370dp"
-        android:layout_height="196dp"
-        android:gravity="center"
-        android:text="TextView" />
+        android:background="#FFFFFF"
+        app:srcCompat="@drawable/ic_access_time_black_24dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:onClick="update"
-        android:text="Button" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="95dp"
+        android:layout_height="63dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|right"
+        app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
