@@ -6,18 +6,18 @@ import java.util.ArrayList;
 public class Cycle implements Serializable {
     private String name;
     private ArrayList<Exercise> exercises;
-    private int cycleReptations;
+    private int cycleRepetitions;
 
     public Cycle(){
         name = "";
         exercises = new ArrayList<>();
-        cycleReptations = 1;
+        cycleRepetitions = 0;
     }
 
-    public Cycle(String name, ArrayList<Exercise> exercises, int cycleReptations){
+    public Cycle(String name, ArrayList<Exercise> exercises, int cycleRepetitions){
         this.name = name;
         this.exercises = exercises;
-        this.cycleReptations = cycleReptations;
+        this.cycleRepetitions = cycleRepetitions;
     }
 
     public void setName(String name) {
@@ -36,11 +36,11 @@ public class Cycle implements Serializable {
         return exercises;
     }
 
-    public void setCycleReptations(int cycleReptations) {
-        this.cycleReptations = cycleReptations;
+    public void setCycleRepetitions(int cycleRepetitions) {
+        this.cycleRepetitions = cycleRepetitions;
     }
 
-    public int getCycleReptations() {
-        return cycleReptations;
+    public int getCycleRepetitions() {
+        return cycleRepetitions;
     }
 }

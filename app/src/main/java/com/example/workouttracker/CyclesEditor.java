@@ -15,7 +15,7 @@ import com.example.workouttracker.datastructure.Workout;
 
 import java.util.ArrayList;
 
-public class cyclesEditor extends AppCompatActivity {
+public class CyclesEditor extends AppCompatActivity {
 
     Cycle cycle = new Cycle();
     Workout workout;
@@ -24,6 +24,7 @@ public class cyclesEditor extends AppCompatActivity {
     private int numberOfCycle = 1;
     TextView cycleNum;
     EditText cycleName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,12 @@ public class cyclesEditor extends AppCompatActivity {
         setSupportActionBar(toolbar);
         cycleNum = findViewById(R.id.numOfCycles);
         cycleName = findViewById(R.id.NameOfCycle);
-        numberOfCycle = cycle.getCycleReptations();
+        numberOfCycle = cycle.getCycleRepetitions();
         cycleNum.setText(String.valueOf(numberOfCycle));
     }
 
     public void EditExercise(View v, int exerciseIndex){
-        Intent editExercise = new Intent(cyclesEditor.this, exerciseEditor.class);
+        Intent editExercise = new Intent(CyclesEditor.this, ExerciseEditor.class);
         editExercise.putExtra("exerciseIndex",exerciseIndex);
         editExercise.putExtra("workout",workout);
         editExercise.putExtra("cycleIndex",cycleIndex);
@@ -60,7 +61,7 @@ public class cyclesEditor extends AppCompatActivity {
 
     public void newExercise(View v){
         saveName();
-        Intent newExercise = new Intent(cyclesEditor.this, exerciseEditor.class);
+        Intent newExercise = new Intent(CyclesEditor.this, ExerciseEditor.class);
         newExercise.putExtra("exerciseIndex",cycle.getExercises().size());
         newExercise.putExtra("workout",workout);
         newExercise.putExtra("cycleIndex",cycleIndex);
@@ -69,7 +70,7 @@ public class cyclesEditor extends AppCompatActivity {
     }
 
     public void backToWorkout(View v){
-        Intent workoutPage = new Intent(cyclesEditor.this, workoutEditor.class);
+        Intent workoutPage = new Intent(CyclesEditor.this, WorkoutEditor.class);
         workoutPage.putExtra("workout",originWorkout);
         startActivity(workoutPage);
         finish();
@@ -77,7 +78,7 @@ public class cyclesEditor extends AppCompatActivity {
 
     public void saveCycle(View v){
         saveName();
-        Intent workoutPage = new Intent(cyclesEditor.this, workoutEditor.class);
+        Intent workoutPage = new Intent(CyclesEditor.this, WorkoutEditor.class);
         workoutPage.putExtra("workout",workout);
         startActivity(workoutPage);
         finish();

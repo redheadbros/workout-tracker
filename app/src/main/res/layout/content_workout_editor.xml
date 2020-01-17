@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".workoutEditor"
+    tools:context=".WorkoutEditor"
     tools:showIn="@layout/activity_workout_editor">
 
     <androidx.core.widget.NestedScrollView
