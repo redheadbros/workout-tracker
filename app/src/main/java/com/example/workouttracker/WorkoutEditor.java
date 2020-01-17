@@ -9,6 +9,8 @@ import com.example.workouttracker.datastructure.WorkoutList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.EditText;
@@ -35,6 +37,11 @@ public class WorkoutEditor extends AppCompatActivity {
         }else {
             workout = new Workout();
         }
+        RecyclerView recyclerView = findViewById(R.id.allCycles);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        WorkoutEditorAdapter adapter = new WorkoutEditorAdapter(this, workout);
+        recyclerView.setAdapter(adapter);
     }
 
 

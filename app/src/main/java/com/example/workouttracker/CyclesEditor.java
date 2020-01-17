@@ -47,6 +47,7 @@ public class CyclesEditor extends AppCompatActivity {
         cycleName = findViewById(R.id.NameOfCycle);
         numberOfCycle = cycle.getCycleRepetitions();
         cycleNum.setText(String.valueOf(numberOfCycle));
+
     }
 
     public void EditExercise(View v, int exerciseIndex){

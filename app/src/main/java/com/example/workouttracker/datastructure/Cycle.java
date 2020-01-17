@@ -11,7 +11,7 @@ public class Cycle implements Serializable {
     public Cycle(){
         name = "";
         exercises = new ArrayList<>();
-        cycleRepetitions = 0;
+        cycleRepetitions = 1;
     }
 
     public Cycle(String name, ArrayList<Exercise> exercises, int cycleRepetitions){

@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_workout_editor">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/allCycles"
         android:layout_width="418dp"
         android:layout_height="189dp"
         app:layout_constraintBottom_toBottomOf="parent"
