@@ -30,6 +30,7 @@ public class WorkoutEditorAdapter extends RecyclerView.Adapter<WorkoutEditorAdap
 
   public WorkoutEditorAdapter(Context c, Workout workout) {
     workoutBeingEdited = workout;
+    context = c;
     cycles = workout.getCycles();
   }
 
