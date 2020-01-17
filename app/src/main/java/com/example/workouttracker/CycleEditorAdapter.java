@@ -44,7 +44,7 @@ public class CycleEditorAdapter extends RecyclerView.Adapter<CycleEditorAdapter.
   public CycleEditorAdapter.CycleEditorViewHolder onCreateViewHolder(ViewGroup parent,
                                                                          int viewType) {
     Button button = (Button) LayoutInflater.from(parent.getContext())
-        .inflate(viewType, parent, false);
+        .inflate(R.layout.select_workout_button, parent, false);
 
    CycleEditorViewHolder holder = new CycleEditorViewHolder(button);
 

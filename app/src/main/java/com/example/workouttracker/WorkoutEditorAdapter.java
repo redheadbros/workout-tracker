@@ -38,7 +38,7 @@ public class WorkoutEditorAdapter extends RecyclerView.Adapter<WorkoutEditorAdap
   public WorkoutEditorAdapter.WorkoutEditorViewHolder onCreateViewHolder(ViewGroup parent,
                                                                          int viewType) {
     Button button = (Button) LayoutInflater.from(parent.getContext())
-        .inflate(viewType, parent, false);
+        .inflate(R.layout.select_workout_button, parent, false);
 
     WorkoutEditorViewHolder holder = new WorkoutEditorViewHolder(button);
 
