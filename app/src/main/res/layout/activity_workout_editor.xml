@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/NameOfCycle"
+        android:id="@+id/NameOfWorkout"
         android:layout_width="330dp"
         android:layout_height="82dp"
         android:layout_marginTop="188dp"
