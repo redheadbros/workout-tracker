@@ -9,7 +9,7 @@ public class Cycle implements Serializable {
     private int cycleRepetitions;
 
     public Cycle(){
-        name = "";
+        name = "Cycle Name";
         exercises = new ArrayList<>();
         cycleRepetitions = 1;
     }

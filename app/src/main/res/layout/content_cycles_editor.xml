@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".CyclesEditor"
-    tools:showIn="@layout/activity_cycles_editor"/>
+    tools:showIn="@layout/activity_cycles_editor">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/AllExercises"
+        android:layout_width="418dp"
+        android:layout_height="189dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

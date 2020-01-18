@@ -103,6 +103,11 @@ public class History extends AppCompatActivity {
 
     }
 
+    public void clearHistory(){
+        HistoryData nothing = new HistoryData();
+        Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
+    }
+
 
 
 }

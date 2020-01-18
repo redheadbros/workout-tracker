@@ -104,6 +104,10 @@ public class ExerciseEditor extends AppCompatActivity{
     }
 
     public void goback(View v){
+        Intent cycleEditor = new Intent(ExerciseEditor.this, CyclesEditor.class);
+        cycleEditor.putExtra("workout",workout);
+        cycleEditor.putExtra("cycleIndex",cycleIndex);
+        startActivity(cycleEditor);
         finish();
     }
 }
