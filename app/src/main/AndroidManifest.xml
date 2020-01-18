@@ -14,6 +14,17 @@
             android:name=".WorkoutEditor"
             android:label="@string/title_activity_workout_editor"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".splash_screen"
+            android:label="activity_splash_screen"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
         <activity
             android:name=".CyclesEditor"
             android:label="@string/title_activity_cycles_editor"
@@ -34,11 +45,7 @@
             android:name=".SelectWorkout"
             android:label="@string/title_activity_select_workout"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
