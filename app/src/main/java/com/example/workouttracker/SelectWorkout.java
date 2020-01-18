@@ -63,7 +63,7 @@ public class SelectWorkout extends AppCompatActivity {
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
 
-    SelectWorkoutAdapter adapter = new SelectWorkoutAdapter(this, getSampleWorkoutList());
+    SelectWorkoutAdapter adapter = new SelectWorkoutAdapter(this, workouts);
     recyclerView.setAdapter(adapter);
   }
 
