@@ -1,5 +1,6 @@
 package com.example.workouttracker;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,10 +21,12 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
     }
   }
 
+  private Context context;
   private Workout workout;
   private ArrayList<Cycle> cycles;
 
-  public ActiveWorkoutAdapter(Workout workoutToDo) {
+  public ActiveWorkoutAdapter(Context appContext, Workout workoutToDo) {
+    context = appContext;
     workout = workoutToDo;
     cycles = workoutToDo.getCycles();
   }
