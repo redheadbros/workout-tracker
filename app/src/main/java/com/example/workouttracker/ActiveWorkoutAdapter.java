@@ -1,8 +1,10 @@
 package com.example.workouttracker;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +16,8 @@ import java.util.ArrayList;
 public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdapter.ActiveWorkoutViewHolder> {
 
   public static class ActiveWorkoutViewHolder extends RecyclerView.ViewHolder {
-    public View view;
-    public ActiveWorkoutViewHolder(View v) {
+    public LinearLayout view;
+    public ActiveWorkoutViewHolder(LinearLayout v) {
       super(v);
       view = v;
     }
@@ -34,6 +36,11 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
   @Override
   public ActiveWorkoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+    LinearLayout linearLayout = (LinearLayout) LayoutInflater.from(parent.getContext())
+        .inflate(R.layout.active_workout_cycle_view, parent, false);
+
+    ActiveWorkoutViewHolder holder = new ActiveWorkoutViewHolder(linearLayout);
+    return holder;
   }
 
   @Override
