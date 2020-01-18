@@ -1,12 +1,15 @@
 package com.example.workouttracker;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -25,13 +28,14 @@ public class history extends AppCompatActivity {
     ArrayList<String> dateList = new ArrayList<>();
     ArrayList<Workout> workoutList = new ArrayList<>();
     ArrayAdapter<String> adapter;
+    Button clearButton;
     private ActiveWorkout activeWorkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         generateAllDate();
-        generateAllWorkout();
+
 
         setContentView(R.layout.activity_history);
         activeWorkout = new ActiveWorkout();
@@ -39,13 +43,6 @@ public class history extends AppCompatActivity {
         dateList = new ArrayList<String>();
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dateList);
-
-
-
-
-
-
-
 
 
         imageView = (ImageView)findViewById(R.id.imageView);
@@ -68,8 +65,35 @@ public class history extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
+        clearButton = (Button)findViewById(R.id.button2);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(history.this);
+                builder.setMessage("Are you sure you want to clear your records?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
 
 
+
+
+
+
+            }
+        });
 
 
 
@@ -110,8 +134,6 @@ public class history extends AppCompatActivity {
     public void openWorkoutDescription(){
         generateAllWorkout();
     }
-
-
 
 
 }
