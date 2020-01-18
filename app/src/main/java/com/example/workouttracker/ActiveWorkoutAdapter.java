@@ -1,4 +1,5 @@
-/*package com.example.workouttracker;
+/*
+package com.example.workouttracker;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
 
   @Override
   public ActiveWorkoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
+      return
   }
 
   @Override
@@ -41,5 +42,5 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
   public int getItemCount() {
     return cycles.size();
   }
-}
+
 */

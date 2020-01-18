@@ -12,12 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#E53535"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include4"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <com.google.android.material.appbar.AppBarLayout
@@ -34,43 +31,40 @@
     <include
         android:id="@+id/include4"
         layout="@layout/content_workout_editor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="410dp"
+        android:layout_height="238dp"
+        android:layout_marginTop="39dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/appBarLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout4" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NameOfWorkout" />
 
     <Button
         android:id="@+id/newExercise"
-        android:layout_width="59dp"
-        android:layout_height="81dp"
-        android:layout_marginBottom="80dp"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="35dp"
         android:background="#C9FFFFFF"
         android:lineSpacingExtra="20sp"
         android:lineSpacingMultiplier="0"
         android:onClick="newCycle"
-        android:text="+"
-        android:textSize="50sp"
+        android:text="New Cycle"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBarLayout4"
-        app:layout_constraintVertical_bias="0.943" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="28dp"
         android:text="Name"
         android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteButton" />
 
     <EditText
         android:id="@+id/NameOfWorkout"
@@ -93,26 +87,40 @@
 
     <ImageView
         android:id="@+id/cancelButton"
-        android:layout_width="62dp"
-        android:layout_height="54dp"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:onClick="goback"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_cancel_black_24dp" />
 
     <ImageView
         android:id="@+id/saveButton"
-        android:layout_width="62dp"
-        android:layout_height="54dp"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:onClick="saveWorkout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/include4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_save_black_24dp" />
+
+    <ImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="8dp"
+        android:onClick="deleteWorkout"
+        android:text="@android:string/cancel"
+        app:layout_constraintEnd_toStartOf="@id/saveButton"
+        app:layout_constraintStart_toEndOf="@+id/cancelButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_delete_forever_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

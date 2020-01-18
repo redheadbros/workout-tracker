@@ -53,7 +53,6 @@ public class WorkoutEditorAdapter extends RecyclerView.Adapter<WorkoutEditorAdap
       @Override
       public void onClick(View v) {
         Intent editCycle = new Intent(context, CyclesEditor.class);
-
         editCycle.putExtra("workout", workoutBeingEdited);
         editCycle.putExtra("cycleIndex", position);
         context.startActivity(editCycle);
