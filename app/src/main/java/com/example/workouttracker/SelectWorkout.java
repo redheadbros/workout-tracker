@@ -65,6 +65,15 @@ public class SelectWorkout extends AppCompatActivity {
 
     SelectWorkoutAdapter adapter = new SelectWorkoutAdapter(this, workouts);
     recyclerView.setAdapter(adapter);
+
+    //TEST CODE FOR ACTIVE WORKOUT
+    WorkoutList testWorkouts = getSampleWorkoutList();
+    ArrayList<Workout> testWorkoutList = testWorkouts.getWorkoutList();
+    Workout testWorkout1 = testWorkoutList.get(0);
+
+    Intent openActiveWorkout = new Intent(this, ActiveWorkout.class);
+    openActiveWorkout.putExtra("workout", testWorkout1);
+    startActivity(openActiveWorkout);
   }
 
   public void openHistory(){

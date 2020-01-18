@@ -64,7 +64,7 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
     //set counter correctly
     LinearLayout cycleTitleCounterLayout = (LinearLayout) cycleTitleLayout.getChildAt(1);
     TextView cycleTitleCounterTextView = (TextView) cycleTitleCounterLayout.getChildAt(1);
-    cycleTitleCounterTextView.setText(progress.getCyclesCompleted(position));
+    cycleTitleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(position)));
 
     //setup counter buttons
     Button minus = (Button) cycleTitleCounterLayout.getChildAt(0);
@@ -79,7 +79,7 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
         //update text view
         LinearLayout cycleCounterLayout = (LinearLayout) v.getParent();
         TextView cycleCounterTextView = (TextView) cycleCounterLayout.getChildAt(1);
-        cycleCounterTextView.setText(progress.getCyclesCompleted(position));
+        cycleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(position)));
       }
     });
 
@@ -92,7 +92,7 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
         //update text view
         LinearLayout cycleCounterLayout = (LinearLayout) v.getParent();
         TextView cycleCounterTextView = (TextView) cycleCounterLayout.getChildAt(1);
-        cycleCounterTextView.setText(progress.getCyclesCompleted(position));
+        cycleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(position)));
       }
     });
 
