@@ -18,13 +18,15 @@
 
             <Button
                 android:layout_width="@dimen/workout_counter_button_width"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="-"/>
             <TextView
                 android:layout_width="@dimen/workout_counter_button_width"
                 android:layout_height="wrap_content"/>
             <Button
                 android:layout_width="@dimen/workout_counter_button_width"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="+"/>
 
         </LinearLayout>
 
