@@ -117,7 +117,7 @@ public class CyclesEditor extends AppCompatActivity {
         workout.setCycles(cycleList);
     }
 
-    private void deleteCycle(View v){
+    public void deleteCycle(View v){
         ArrayList<Cycle> cycleList = workout.getCycles();
         cycleList.remove(cycleIndex);
         workout.setCycles(cycleList);

@@ -47,6 +47,11 @@ public class WorkoutDescription extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         Intent gotoWorkoutEditior = new Intent(WorkoutDescription.this, WorkoutEditor.class);
+        Intent intent = getIntent();
+        Workout workoutData = (Workout)intent.getSerializableExtra("workout");
+        int index = (int)intent.getSerializableExtra("index");
+        workoutData.setIndex(index);
+        gotoWorkoutEditior.putExtra("workout",workoutData);
         startActivity(gotoWorkoutEditior);
       }
     });

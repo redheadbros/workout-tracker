@@ -29,6 +29,7 @@ public class ExerciseEditor extends AppCompatActivity{
     EditText exerciseName;
     EditText exerciseDes;
     Exercise exercise;
+    String defaultName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +48,18 @@ public class ExerciseEditor extends AppCompatActivity{
         exerciseDes = findViewById(R.id.getDescription);
         if(exerciseIndex == exerciseList.size()){
             exercise = new Exercise();
+            defaultName = "Exercise" + String.valueOf(exerciseIndex + 1);
         }else{
             editingMode = true;
             exercise = exerciseList.get(exerciseIndex);
+            defaultName = exercise.getName();
         }
         numberOfSets = exercise.getSets();
         setsNum.setText(String.valueOf(numberOfSets));
+        exerciseName.setText(defaultName);
+        if(editingMode){
+            exerciseDes.setText(exercise.getDescription());
+        }
     }
 
     public void saveExercise(View v){

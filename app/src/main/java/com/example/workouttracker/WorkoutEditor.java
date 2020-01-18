@@ -21,6 +21,7 @@ public class WorkoutEditor extends AppCompatActivity {
 
     private Workout workout;
     EditText nameOfWorkout;
+    String defaultName;
 
 
     @Override
@@ -34,14 +35,19 @@ public class WorkoutEditor extends AppCompatActivity {
         Bundle extras = workoutData.getExtras();
         if(extras != null){
             workout = (Workout)workoutData.getSerializableExtra("workout");
+            defaultName = workout.getName();
         }else {
             workout = new Workout();
+            WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
+            ArrayList<Workout> workoutArray = workoutList.getWorkoutList();
+            defaultName = "Workout" + String.valueOf(workoutArray.size() + 1);
         }
         RecyclerView recyclerView = findViewById(R.id.allCycles);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         WorkoutEditorAdapter adapter = new WorkoutEditorAdapter(this, workout);
         recyclerView.setAdapter(adapter);
+        nameOfWorkout.setText(workout.getName());
     }
 
 
@@ -57,13 +63,6 @@ public class WorkoutEditor extends AppCompatActivity {
         newCycle.putExtra("workout",workout);
         newCycle.putExtra("cycleIndex",workout.getCycles().size());
         startActivity(newCycle);
-    }
-
-    public void editCycle(View v, int cycleIndex){
-        Intent editCycle = new Intent(WorkoutEditor.this, CyclesEditor.class);
-        editCycle.putExtra("workout",workout);
-        editCycle.putExtra("cycleIndex",cycleIndex);
-        startActivity(editCycle);
     }
 
     public void saveWorkout(View v){
@@ -83,7 +82,7 @@ public class WorkoutEditor extends AppCompatActivity {
         Intent workoutData = getIntent();
         Bundle extras = workoutData.getExtras();
         if(extras != null){
-            int index = (int)workoutData.getSerializableExtra("index");
+            int index = workout.getIndex();
             WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
             ArrayList<Workout> workoutArray = workoutList.getWorkoutList();
             workoutArray.remove(index);

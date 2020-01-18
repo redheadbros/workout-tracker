@@ -37,7 +37,7 @@ public class SelectWorkout extends AppCompatActivity {
     imageView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        openhistory();
+        openHistory();
       }
     });
 

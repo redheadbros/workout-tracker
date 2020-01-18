@@ -69,7 +69,7 @@ public class History extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(history.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(History.this);
                 builder.setMessage("Are you sure you want to clear your records?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
