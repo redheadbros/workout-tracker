@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class history extends AppCompatActivity {
+public class History extends AppCompatActivity {
     ListView listView;
     ImageView imageView;
     ArrayList<String> dateList = new ArrayList<>();

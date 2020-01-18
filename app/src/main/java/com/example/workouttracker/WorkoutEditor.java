@@ -11,16 +11,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.EditText;
 
 public class WorkoutEditor extends AppCompatActivity {
 
     private Workout workout;
+    EditText nameOfWorkout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_editor);
+        nameOfWorkout = findViewById(R.id.NameOfWorkout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent workoutData = getIntent();
@@ -55,6 +58,7 @@ public class WorkoutEditor extends AppCompatActivity {
     }
 
     public void saveWorkout(View v){
+        workout.setName(nameOfWorkout.getText().toString());
         WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
         if(workoutList == null){
             workoutList = new WorkoutList();
