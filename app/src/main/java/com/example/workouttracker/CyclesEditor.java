@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +26,8 @@ public class CyclesEditor extends AppCompatActivity {
     private int numberOfCycle = 1;
     TextView cycleNum;
     EditText cycleName;
+    String defaultName;
+    RecyclerView allExercises;
 
 
     @Override
@@ -33,21 +37,29 @@ public class CyclesEditor extends AppCompatActivity {
         workout = (Workout)(dataReceiver.getSerializableExtra("workout"));
         cycleIndex = (int)(dataReceiver.getSerializableExtra("cycleIndex"));
         originWorkout = workout;
-        if(cycleIndex == workout.getCycles().size()){
-            originWorkout = workout;
-            ArrayList<Cycle> cycles = workout.getCycles();
-            cycles.add(cycle);
-            workout.setCycles(cycles);
-        }else {
-            cycle = workout.getCycles().get(cycleIndex);
-        }
         setContentView(R.layout.activity_cycles_editor);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         cycleNum = findViewById(R.id.numOfCycles);
         cycleName = findViewById(R.id.NameOfCycle);
+        allExercises = findViewById(R.id.AllExercises);
+        if(cycleIndex == workout.getCycles().size()){
+            ArrayList<Cycle> cycles = workout.getCycles();
+            cycles.add(cycle);
+            workout.setCycles(cycles);
+            defaultName = "Cycle" + String.valueOf(cycleIndex + 1);
+        }else {
+            cycle = workout.getCycles().get(cycleIndex);
+            defaultName = cycle.getName();
+        }
         numberOfCycle = cycle.getCycleRepetitions();
+        System.out.println(numberOfCycle);
         cycleNum.setText(String.valueOf(numberOfCycle));
+        cycleName.setText(defaultName);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        allExercises.setLayoutManager(layoutManager);
+        CycleEditorAdapter adapter = new CycleEditorAdapter(this, workout,cycleIndex);
+        allExercises.setAdapter(adapter);
     }
 
     public void EditExercise(View v, int exerciseIndex){
@@ -87,6 +99,7 @@ public class CyclesEditor extends AppCompatActivity {
     public void addNumber(View v){
         numberOfCycle +=1;
         cycleNum.setText(String.valueOf(numberOfCycle));
+        cycle.setCycleRepetitions(numberOfCycle);
     }
 
     public void subtractNumber(View v){
@@ -94,6 +107,7 @@ public class CyclesEditor extends AppCompatActivity {
             numberOfCycle -=1;
         }
         cycleNum.setText(String.valueOf(numberOfCycle));
+        cycle.setCycleRepetitions(numberOfCycle);
     }
 
     private void saveName(){
@@ -101,6 +115,16 @@ public class CyclesEditor extends AppCompatActivity {
         cycle.setName(cycleName.getText().toString());
         cycleList.set(cycleIndex,cycle);
         workout.setCycles(cycleList);
+    }
+
+    public void deleteCycle(View v){
+        ArrayList<Cycle> cycleList = workout.getCycles();
+        cycleList.remove(cycleIndex);
+        workout.setCycles(cycleList);
+        Intent workoutPage = new Intent(CyclesEditor.this, WorkoutEditor.class);
+        workoutPage.putExtra("workout",workout);
+        startActivity(workoutPage);
+        finish();
     }
 
 

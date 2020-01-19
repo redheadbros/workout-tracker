@@ -33,7 +33,7 @@ public class SelectWorkout extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_select_workout);
 
-    imageView = (ImageView) findViewById(R.id.imageView3);
+    imageView = findViewById(R.id.imageView3);
     imageView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -41,10 +41,10 @@ public class SelectWorkout extends AppCompatActivity {
       }
     });
 
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    iV = (ImageView) findViewById(R.id.imageView4);
+    iV = findViewById(R.id.imageView4);
     iV.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {

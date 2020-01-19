@@ -9,14 +9,19 @@ import com.example.workouttracker.datastructure.WorkoutList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.EditText;
+
+import java.util.ArrayList;
 
 public class WorkoutEditor extends AppCompatActivity {
 
     private Workout workout;
     EditText nameOfWorkout;
+    String defaultName;
 
 
     @Override
@@ -30,9 +35,19 @@ public class WorkoutEditor extends AppCompatActivity {
         Bundle extras = workoutData.getExtras();
         if(extras != null){
             workout = (Workout)workoutData.getSerializableExtra("workout");
+            defaultName = workout.getName();
         }else {
             workout = new Workout();
+            WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
+            ArrayList<Workout> workoutArray = workoutList.getWorkoutList();
+            defaultName = "Workout" + String.valueOf(workoutArray.size() + 1);
         }
+        RecyclerView recyclerView = findViewById(R.id.allCycles);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        WorkoutEditorAdapter adapter = new WorkoutEditorAdapter(this, workout);
+        recyclerView.setAdapter(adapter);
+        nameOfWorkout.setText(workout.getName());
     }
 
 
@@ -50,21 +65,36 @@ public class WorkoutEditor extends AppCompatActivity {
         startActivity(newCycle);
     }
 
-    public void editCycle(View v, int cycleIndex){
-        Intent editCycle = new Intent(WorkoutEditor.this, CyclesEditor.class);
-        editCycle.putExtra("workout",workout);
-        editCycle.putExtra("cycleIndex",cycleIndex);
-        startActivity(editCycle);
-    }
-
     public void saveWorkout(View v){
         workout.setName(nameOfWorkout.getText().toString());
         WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
         if(workoutList == null){
             workoutList = new WorkoutList();
         }
-        workoutList.addWorkout(workout);
+        if(workout.getIndex() == -10){
+            workoutList.addWorkout(workout);
+        }else{
+           ArrayList<Workout> ar= workoutList.getWorkoutList();
+           ar.set(workout.getIndex(),workout);
+           workoutList.setWorkoutList(ar);
+        }
         Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
+        Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
+        startActivity(mainScreen);
+        finish();
+    }
+
+    public void deleteWorkout(View v){
+        Intent workoutData = getIntent();
+        Bundle extras = workoutData.getExtras();
+        if(extras != null){
+            int index = workout.getIndex();
+            WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
+            ArrayList<Workout> workoutArray = workoutList.getWorkoutList();
+            workoutArray.remove(index);
+            workoutList.setWorkoutList(workoutArray);
+            Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
+        }
         Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
         startActivity(mainScreen);
         finish();

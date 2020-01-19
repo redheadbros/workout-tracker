@@ -9,16 +9,13 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarrr"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#E53935"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ImageView
@@ -31,10 +28,7 @@
         android:onClick="saveCycle"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_save_black_24dp" />
 
     <ImageView
@@ -46,25 +40,35 @@
         android:layout_marginTop="8dp"
         android:onClick="backToWorkout"
         android:text="@android:string/cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_cancel_black_24dp" />
+
+    <ImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="8dp"
+        android:onClick="deleteCycle"
+        android:text="@android:string/cancel"
+        app:layout_constraintEnd_toStartOf="@id/saveButton"
+        app:layout_constraintStart_toEndOf="@+id/cancelButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_delete_forever_black_24dp" />
 
     <TextView
         android:id="@+id/numOfCycles"
         android:layout_width="80dp"
         android:layout_height="109dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sets" />
 
     <Button
         android:id="@+id/minusSets"
@@ -72,90 +76,100 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
         android:background="#F9F9F9"
         android:onClick="subtractNumber"
         android:text="-"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintEnd_toStartOf="@+id/numOfCycles"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintTop_toBottomOf="@+id/sets" /><![CDATA[
+
+
+
+
+
+    app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.944" />
+
+
+
+
+
+    ]]>
 
     <Button
         android:id="@+id/addSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
         android:background="#F9F9F9"
         android:onClick="addNumber"
         android:text="+"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintStart_toEndOf="@+id/numOfCycles"
+        app:layout_constraintTop_toBottomOf="@+id/sets" />
 
     <TextView
         android:id="@+id/sets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
         android:text="Number of Cycles"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/newExercise"
         android:layout_width="280dp"
         android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/custombutton"
-        android:gravity="center_horizontal"
+        android:gravity="center|center_horizontal"
         android:onClick="newExercise"
         android:text="New Exercise"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numOfCycles" />
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.944" />
+        app:layout_constraintTop_toBottomOf="@+id/numOfCycles" />
 
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="28dp"
         android:text="Name"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteButton" />
 
     <EditText
         android:id="@+id/NameOfCycle"
-        android:layout_width="330dp"
-        android:layout_height="82dp"
+        android:layout_width="335dp"
+        android:layout_height="60dp"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="132dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:baselineAligned="false"
@@ -166,11 +180,24 @@
         android:maxLength="16"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:text=""
+        android:text=" "
         android:textColor="#000000"
         android:textColorHint="#95A1AA"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/AllExercisesssss"
+        layout="@layout/content_cycles_editor"
+        android:layout_width="409dp"
+        android:layout_height="224dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/sets"
+        app:layout_constraintTop_toBottomOf="@+id/NameOfCycle"
+        tools:layout_editor_absoluteX="2dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

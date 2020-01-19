@@ -9,9 +9,9 @@ public class Cycle implements Serializable {
     private int cycleRepetitions;
 
     public Cycle(){
-        name = "";
+        name = "Cycle Name";
         exercises = new ArrayList<>();
-        cycleRepetitions = 0;
+        cycleRepetitions = 1;
     }
 
     public Cycle(String name, ArrayList<Exercise> exercises, int cycleRepetitions){

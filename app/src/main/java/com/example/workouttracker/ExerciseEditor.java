@@ -24,10 +24,12 @@ public class ExerciseEditor extends AppCompatActivity{
     private ArrayList<Exercise> exerciseList;
     private Cycle cycle;
     private Workout workout;
+    private Boolean editingMode = false;
     TextView setsNum;
     EditText exerciseName;
     EditText exerciseDes;
     Exercise exercise;
+    String defaultName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +48,18 @@ public class ExerciseEditor extends AppCompatActivity{
         exerciseDes = findViewById(R.id.getDescription);
         if(exerciseIndex == exerciseList.size()){
             exercise = new Exercise();
+            defaultName = "Exercise" + String.valueOf(exerciseIndex + 1);
         }else{
+            editingMode = true;
             exercise = exerciseList.get(exerciseIndex);
+            defaultName = exercise.getName();
         }
         numberOfSets = exercise.getSets();
         setsNum.setText(String.valueOf(numberOfSets));
+        exerciseName.setText(defaultName);
+        if(editingMode){
+            exerciseDes.setText(exercise.getDescription());
+        }
     }
 
     public void saveExercise(View v){
@@ -86,7 +95,26 @@ public class ExerciseEditor extends AppCompatActivity{
         setsNum.setText(String.valueOf(numberOfSets));
     }
 
+    public void deleteExercise(View v){
+        if(editingMode){
+            exerciseList.remove(exerciseIndex);
+        }
+        cycle.setExercises(exerciseList);
+        ArrayList<Cycle> cycleList = workout.getCycles();
+        cycleList.set(cycleIndex,cycle);
+        workout.setCycles(cycleList);
+        Intent cycleEditor = new Intent(ExerciseEditor.this, CyclesEditor.class);
+        cycleEditor.putExtra("workout",workout);
+        cycleEditor.putExtra("cycleIndex",cycleIndex);
+        startActivity(cycleEditor);
+        finish();
+    }
+
     public void goback(View v){
+        Intent cycleEditor = new Intent(ExerciseEditor.this, CyclesEditor.class);
+        cycleEditor.putExtra("workout",workout);
+        cycleEditor.putExtra("cycleIndex",cycleIndex);
+        startActivity(cycleEditor);
         finish();
     }
 }

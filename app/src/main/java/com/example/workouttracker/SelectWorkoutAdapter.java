@@ -49,10 +49,10 @@ public class SelectWorkoutAdapter extends RecyclerView.Adapter<SelectWorkoutAdap
     holder.button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent gotoWorkout = new Intent(context, WorkoutDescription.class);
-
-        gotoWorkout.putExtra("workout", workouts.get(position));
-        context.startActivity(gotoWorkout);
+        Intent gotoWorkoutDes = new Intent(context, WorkoutDescription.class);
+        gotoWorkoutDes.putExtra("workout", workouts.get(position));
+        gotoWorkoutDes.putExtra("index", position);
+        context.startActivity(gotoWorkoutDes);
       }
     });
   }
