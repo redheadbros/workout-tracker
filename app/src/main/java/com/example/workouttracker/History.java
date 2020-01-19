@@ -36,7 +36,6 @@ public class History extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         makeHistoryFile();
-        generateAllDate();
 
         generateAllDates();
         generateAllWorkouts();
@@ -151,9 +150,7 @@ public class History extends AppCompatActivity {
         Json.saveToJson(getApplicationContext(),historyDa,"HISTORY.json");
     }
 
-    public void openWorkoutDescription(){
 
-    }
 
     public void clearHistory(){
         HistoryData nothing = new HistoryData();
