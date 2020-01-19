@@ -15,11 +15,21 @@ import java.util.ArrayList;
 public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.ActiveExerciseViewHolder> {
 
   public static class ActiveExerciseViewHolder extends RecyclerView.ViewHolder {
-    public LinearLayout linearLayout;
+    public LinearLayout exerciseLayout;
+    public LinearLayout titleLayout;
+    public TextView titleView;
+    public LinearLayout counterLayout;
+    public TextView descriptionView;
+
     public int exerciseIndex;
+
     public ActiveExerciseViewHolder(LinearLayout l) {
       super(l);
-      linearLayout = l;
+      exerciseLayout = l;
+      titleLayout = (LinearLayout) exerciseLayout.getChildAt(0);
+      titleView = (TextView) titleLayout.getChildAt(0);
+      counterLayout = (LinearLayout) titleLayout.getChildAt(1);
+      descriptionView = (TextView) exerciseLayout.getChildAt(1);
     }
   }
 
@@ -51,27 +61,22 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
     //store position data
     holder.exerciseIndex = position;
 
-    //find the children
+    //set exercise details
     Exercise currentExercise = exercises.get(position);
-    LinearLayout exerciseTitleLayout = (LinearLayout) holder.linearLayout.getChildAt(0);
-    TextView exerciseTitle = (TextView) exerciseTitleLayout.getChildAt(0);
-
-    //set exercise title
-    exerciseTitle.setText(currentExercise.getName());
+    String exerciseTitle = currentExercise.getName() + " (";
+    exerciseTitle += currentExercise.getSets() + ")";
+    holder.titleView.setText(exerciseTitle);
+    holder.descriptionView.setText(currentExercise.getDescription());
 
     //setup counter
-    LinearLayout counterLayout = (LinearLayout) exerciseTitleLayout.getChildAt(1);
-    CustomCounterHelper.setupSetCounter(counterLayout, workout, progress, cycleIndex, position);
-
-    //set exercise description
-    TextView description = (TextView) holder.linearLayout.getChildAt(1);
-    description.setText(currentExercise.getDescription());
+    CustomCounterHelper.setupSetCounter(holder.counterLayout, workout, progress, cycleIndex, position);
   }
 
   @Override
   public void onViewRecycled(ActiveExerciseViewHolder holder) {
-    //TODO
-
+    TextView counterTextView = (TextView) holder.counterLayout.getChildAt(1);
+    int setsCompleted = Integer.parseInt((String) counterTextView.getText());
+    progress.setSetsCompleted(cycleIndex, holder.exerciseIndex, setsCompleted);
   }
 
   @Override

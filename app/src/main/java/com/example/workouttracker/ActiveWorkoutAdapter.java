@@ -63,11 +63,9 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
     holder.cycleIndex = position;
 
     //set title of textView
-    //  add on the number of repetitions, i.e. Cycle Name (x3)
     Cycle currentCycle = cycles.get(position);
     String cycleTitleText = currentCycle.getName() + " (x";
     cycleTitleText += currentCycle.getCycleRepetitions() + ")";
-
     holder.titleView.setText(cycleTitleText);
 
     //setup counter
