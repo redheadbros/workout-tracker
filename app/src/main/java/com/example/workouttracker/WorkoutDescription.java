@@ -25,6 +25,7 @@ public class WorkoutDescription extends AppCompatActivity {
   private RecyclerView.LayoutManager layoutManager;
 
   private Workout workout;
+  private boolean history;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class WorkoutDescription extends AppCompatActivity {
     //fetch workout from previous page
     Intent intent = getIntent();
     workout = (Workout)intent.getSerializableExtra("workout");
+    history = (boolean) intent.getSerializableExtra("history");
 
     //setup 'start workout' button
     imageView = (ImageView)findViewById(R.id.imageView2);
@@ -56,8 +58,10 @@ public class WorkoutDescription extends AppCompatActivity {
         Intent gotoWorkoutEditor = new Intent(WorkoutDescription.this, WorkoutEditor.class);
         Intent intent = getIntent();
         Workout workoutData = (Workout)intent.getSerializableExtra("workout");
-        int index = (int)intent.getSerializableExtra("index");
-        workoutData.setIndex(index);
+        if(history != true){
+          int index = (int)intent.getSerializableExtra("index");
+          workoutData.setIndex(index);
+        }
         gotoWorkoutEditor.putExtra("workout",workoutData);
         startActivity(gotoWorkoutEditor);
       }

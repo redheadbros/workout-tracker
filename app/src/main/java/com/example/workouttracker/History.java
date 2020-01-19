@@ -36,9 +36,6 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        //get data from history file, fill date and workout lists
-        makeSampleHistoryFile();
-
         dateList = getDates();
         workoutList = getWorkouts();
 
@@ -62,6 +59,7 @@ public class History extends AppCompatActivity {
                 Intent gotoWorkoutDescription = new Intent(History.this,
                     WorkoutDescription.class);
                 gotoWorkoutDescription.putExtra("workout", workoutList.get(position));
+                gotoWorkoutDescription.putExtra("history",true);
                 startActivity(gotoWorkoutDescription);
             }
         });
