@@ -61,47 +61,16 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
 
     cycleTitleTextView.setText(cycleTitleText);
 
-    //set counter correctly
-    LinearLayout cycleTitleCounterLayout = (LinearLayout) cycleTitleLayout.getChildAt(1);
-    TextView cycleTitleCounterTextView = (TextView) cycleTitleCounterLayout.getChildAt(1);
-    cycleTitleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(position)));
-
-    //setup counter buttons
-    Button minus = (Button) cycleTitleCounterLayout.getChildAt(0);
-    Button plus = (Button) cycleTitleCounterLayout.getChildAt(2);
-
-    minus.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        //change progress
-        progress.setCyclesCompleted(position, progress.getCyclesCompleted(position) - 1);
-
-        //update text view
-        LinearLayout cycleCounterLayout = (LinearLayout) v.getParent();
-        TextView cycleCounterTextView = (TextView) cycleCounterLayout.getChildAt(1);
-        cycleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(position)));
-      }
-    });
-
-    plus.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        //change progress
-        progress.setCyclesCompleted(position, progress.getCyclesCompleted(position) + 1);
-
-        //update text view
-        LinearLayout cycleCounterLayout = (LinearLayout) v.getParent();
-        TextView cycleCounterTextView = (TextView) cycleCounterLayout.getChildAt(1);
-        cycleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(position)));
-      }
-    });
+    //setup counter
+    LinearLayout counterLayout = (LinearLayout) cycleTitleLayout.getChildAt(1);
+    CustomCounterHelper.setupCycleCounter(counterLayout, progress, position);
 
     //setup recyclerView
     RecyclerView exerciseView = (RecyclerView) holder.linearLayout.getChildAt(1);
     LinearLayoutManager layoutManager = new LinearLayoutManager(context);
     exerciseView.setLayoutManager(layoutManager);
 
-    ActiveCycleAdapter adapter = new ActiveCycleAdapter(context, cycles.get(position));
+    ActiveCycleAdapter adapter = new ActiveCycleAdapter(workout, position, progress);
     exerciseView.setAdapter(adapter);
   }
 

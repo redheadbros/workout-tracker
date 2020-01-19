@@ -1,14 +1,14 @@
 package com.example.workouttracker;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.workouttracker.datastructure.Cycle;
 import com.example.workouttracker.datastructure.Exercise;
+import com.example.workouttracker.datastructure.Workout;
 
 import java.util.ArrayList;
 
@@ -22,11 +22,15 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
     }
   }
 
-  private Context context;
   private ArrayList<Exercise> exercises;
+  private WorkoutProgress progress;
+  private int cycleIndex;
 
-  public ActiveCycleAdapter(Context appContext, Cycle toTrack) {
-    exercises = toTrack.getExercises();
+  public ActiveCycleAdapter(Workout toTrack, int currentCycleIndex,
+                            WorkoutProgress workoutProgress) {
+    cycleIndex = currentCycleIndex;
+    exercises = toTrack.getCycles().get(cycleIndex).getExercises();
+    progress = workoutProgress;
   }
 
   @Override
@@ -41,7 +45,20 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
   @Override
   public void onBindViewHolder(ActiveExerciseViewHolder holder, final int position) {
+    Exercise currentExercise = exercises.get(position);
+    LinearLayout exerciseTitleLayout = (LinearLayout) holder.linearLayout.getChildAt(0);
+    TextView exerciseTitle = (TextView) exerciseTitleLayout.getChildAt(0);
 
+    //set exercise title
+    exerciseTitle.setText(currentExercise.getName());
+
+    //setup counter
+    LinearLayout counterLayout = (LinearLayout) exerciseTitleLayout.getChildAt(1);
+    CustomCounterHelper.setupSetCounter(counterLayout, progress, cycleIndex, position);
+
+    //set exercise description
+    TextView description = (TextView) holder.linearLayout.getChildAt(1);
+    description.setText(currentExercise.getDescription());
   }
 
   @Override
