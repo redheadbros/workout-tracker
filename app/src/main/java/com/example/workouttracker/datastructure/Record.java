@@ -11,6 +11,7 @@ public class Record {
     }
 
     public void setRecord(Workout workout){
+        date = new Date(System.currentTimeMillis());
         this.workout = workout;
     }
 
