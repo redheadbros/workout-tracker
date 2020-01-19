@@ -15,19 +15,32 @@ import java.util.ArrayList;
 public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.ActiveExerciseViewHolder> {
 
   public static class ActiveExerciseViewHolder extends RecyclerView.ViewHolder {
-    public LinearLayout linearLayout;
+    public LinearLayout exerciseLayout;
+    public LinearLayout titleLayout;
+    public TextView titleView;
+    public LinearLayout counterLayout;
+    public TextView descriptionView;
+
+    public int exerciseIndex;
+
     public ActiveExerciseViewHolder(LinearLayout l) {
       super(l);
-      linearLayout = l;
+      exerciseLayout = l;
+      titleLayout = (LinearLayout) exerciseLayout.getChildAt(0);
+      titleView = (TextView) titleLayout.getChildAt(0);
+      counterLayout = (LinearLayout) titleLayout.getChildAt(1);
+      descriptionView = (TextView) exerciseLayout.getChildAt(1);
     }
   }
 
   private ArrayList<Exercise> exercises;
   private WorkoutProgress progress;
   private int cycleIndex;
+  private Workout workout;
 
   public ActiveCycleAdapter(Workout toTrack, int currentCycleIndex,
                             WorkoutProgress workoutProgress) {
+    workout = toTrack;
     cycleIndex = currentCycleIndex;
     exercises = toTrack.getCycles().get(cycleIndex).getExercises();
     progress = workoutProgress;
@@ -45,20 +58,25 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
   @Override
   public void onBindViewHolder(ActiveExerciseViewHolder holder, final int position) {
-    Exercise currentExercise = exercises.get(position);
-    LinearLayout exerciseTitleLayout = (LinearLayout) holder.linearLayout.getChildAt(0);
-    TextView exerciseTitle = (TextView) exerciseTitleLayout.getChildAt(0);
+    //store position data
+    holder.exerciseIndex = position;
 
-    //set exercise title
-    exerciseTitle.setText(currentExercise.getName());
+    //set exercise details
+    Exercise currentExercise = exercises.get(position);
+    String exerciseTitle = currentExercise.getName() + " (";
+    exerciseTitle += currentExercise.getSets() + ")";
+    holder.titleView.setText(exerciseTitle);
+    holder.descriptionView.setText(currentExercise.getDescription());
 
     //setup counter
-    LinearLayout counterLayout = (LinearLayout) exerciseTitleLayout.getChildAt(1);
-    CustomCounterHelper.setupSetCounter(counterLayout, progress, cycleIndex, position);
+    CustomCounterHelper.setupSetCounter(holder.counterLayout, workout, progress, cycleIndex, position);
+  }
 
-    //set exercise description
-    TextView description = (TextView) holder.linearLayout.getChildAt(1);
-    description.setText(currentExercise.getDescription());
+  @Override
+  public void onViewRecycled(ActiveExerciseViewHolder holder) {
+    TextView counterTextView = (TextView) holder.counterLayout.getChildAt(1);
+    int setsCompleted = Integer.parseInt((String) counterTextView.getText());
+    progress.setSetsCompleted(cycleIndex, holder.exerciseIndex, setsCompleted);
   }
 
   @Override
