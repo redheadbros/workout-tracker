@@ -39,6 +39,9 @@ public class WorkoutEditor extends AppCompatActivity {
         }else {
             workout = new Workout();
             WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
+            if(workoutList == null){
+                workoutList = new WorkoutList();
+            }
             ArrayList<Workout> workoutArray = workoutList.getWorkoutList();
             defaultName = "Workout" + String.valueOf(workoutArray.size() + 1);
         }
@@ -52,7 +55,7 @@ public class WorkoutEditor extends AppCompatActivity {
 
 
 
-    public void goback(View v){
+    public void goBack(View v){
         Intent mainScreen = new Intent(WorkoutEditor.this, SelectWorkout.class);
         startActivity(mainScreen);
         finish();
