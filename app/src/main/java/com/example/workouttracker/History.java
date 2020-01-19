@@ -36,8 +36,6 @@ public class History extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         makeHistoryFile();
-        generateAllDate();
-
         generateAllDates();
         generateAllWorkouts();
         setContentView(R.layout.activity_history);
@@ -46,6 +44,7 @@ public class History extends AppCompatActivity {
         dateList = new ArrayList<String>();
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,dateList);
+
 
 
         imageView = (ImageView)findViewById(R.id.imageView);
@@ -69,6 +68,8 @@ public class History extends AppCompatActivity {
         });
 
         listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
 
         clearButton = (Button)findViewById(R.id.button2);
         clearButton.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +116,6 @@ public class History extends AppCompatActivity {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             String strDate = dateFormat.format(date);
             dateList.add(strDate);
-            adapter.notifyDataSetChanged();
             index++;
         }
     }
@@ -129,7 +129,6 @@ public class History extends AppCompatActivity {
         while(index < historyData.getHistoryList().size()){
             Workout workout = historyData.getWorkout(index);
             workoutList.add(workout);
-            adapter.notifyDataSetChanged();
             index++;
         }
 
@@ -149,10 +148,6 @@ public class History extends AppCompatActivity {
         historyDa.addHistory(r2);
         historyDa.addHistory(r3);
         Json.saveToJson(getApplicationContext(),historyDa,"HISTORY.json");
-    }
-
-    public void openWorkoutDescription(){
-
     }
 
     public void clearHistory(){
