@@ -157,11 +157,7 @@ public class History extends AppCompatActivity {
         HistoryData nothing = new HistoryData();
         Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
     }
-    public void openWorkoutDescription(){
-        Intent intent = new Intent(this, ActiveWorkout.class);
-        startActivity(intent);
-        finish();
-    }
+
 
 
 }
