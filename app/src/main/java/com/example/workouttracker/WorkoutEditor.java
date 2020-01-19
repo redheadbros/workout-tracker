@@ -20,8 +20,8 @@ import java.util.ArrayList;
 public class WorkoutEditor extends AppCompatActivity {
 
     private Workout workout;
-    EditText nameOfWorkout;
-    String defaultName;
+    private EditText nameOfWorkout;
+    private String defaultName;
 
 
     @Override
@@ -35,7 +35,13 @@ public class WorkoutEditor extends AppCompatActivity {
         Bundle extras = workoutData.getExtras();
         if(extras != null){
             workout = (Workout)workoutData.getSerializableExtra("workout");
-            defaultName = workout.getName();
+            try {
+                defaultName = workout.getName();
+            }catch(NullPointerException e){
+                System.out.println("This is an exception that possibly but never showed in any test");
+                System.out.println("Android studio just kept warning me about it");
+                throw e;
+            }
         }else {
             workout = new Workout();
             WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
@@ -43,14 +49,14 @@ public class WorkoutEditor extends AppCompatActivity {
                 workoutList = new WorkoutList();
             }
             ArrayList<Workout> workoutArray = workoutList.getWorkoutList();
-            defaultName = "Workout" + String.valueOf(workoutArray.size() + 1);
+            defaultName = "Workout " + (workoutArray.size() + 1);
         }
         RecyclerView recyclerView = findViewById(R.id.allCycles);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         WorkoutEditorAdapter adapter = new WorkoutEditorAdapter(this, workout);
         recyclerView.setAdapter(adapter);
-        nameOfWorkout.setText(workout.getName());
+        nameOfWorkout.setText(defaultName);
     }
 
 
