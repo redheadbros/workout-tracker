@@ -22,12 +22,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class History extends AppCompatActivity {
-    ListView listView;
-    ImageView imageView;
-    ArrayList<String> dateList;
-    ArrayList<Workout> workoutList;
-    ArrayAdapter<String> adapter;
-    ImageView clearHistory;
+    private ListView listView;
+    private ImageView imageView;
+    private ArrayList<String> dateList;
+    private ArrayList<Workout> workoutList;
+    private ArrayAdapter<String> adapter;
+    private ImageView clearHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +37,11 @@ public class History extends AppCompatActivity {
         dateList = getDates();
         workoutList = getWorkouts();
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,dateList);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,dateList);
 
 
 
-        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +49,7 @@ public class History extends AppCompatActivity {
             }
         });
 
-        listView = (ListView)findViewById(R.id.listview);
+        listView = findViewById(R.id.listview);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -66,7 +66,7 @@ public class History extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
 
-        clearHistory = (ImageView)findViewById(R.id.imageView7);
+        clearHistory = findViewById(R.id.imageView7);
         clearHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,7 +96,7 @@ public class History extends AppCompatActivity {
 
     }
 
-    public ArrayList<String> getDates(){
+    private ArrayList<String> getDates(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY.json");
         if(historyData == null){
             return new ArrayList<>();
@@ -116,7 +116,7 @@ public class History extends AppCompatActivity {
         return newDateList;
     }
 
-    public ArrayList<Workout> getWorkouts(){
+    private ArrayList<Workout> getWorkouts(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(),HistoryData.class,"HISTORY.json");
         if(historyData == null){
             return new ArrayList<>();
@@ -134,7 +134,7 @@ public class History extends AppCompatActivity {
         return newWorkoutList;
     }
 
-    public void clearHistory(){
+    private void clearHistory(){
         HistoryData nothing = new HistoryData();
         Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
     }
