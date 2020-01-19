@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -29,7 +28,7 @@ public class History extends AppCompatActivity {
     ArrayList<String> dateList;
     ArrayList<Workout> workoutList;
     ArrayAdapter<String> adapter;
-    Button clearButton;
+    ImageView clearHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +67,8 @@ public class History extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
 
-        clearButton = (Button)findViewById(R.id.button2);
-        clearButton.setOnClickListener(new View.OnClickListener() {
+        clearHistory = (ImageView)findViewById(R.id.imageView7);
+        clearHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(History.this);
