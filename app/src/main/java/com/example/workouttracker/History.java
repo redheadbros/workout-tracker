@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.example.workouttracker.datastructure.HistoryData;
 import com.example.workouttracker.datastructure.Json;
+import com.example.workouttracker.datastructure.Record;
 import com.example.workouttracker.datastructure.Workout;
 
 import java.text.DateFormat;
@@ -34,9 +35,8 @@ public class History extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        makeHistoryFile();
         generateAllDate();
-
-
         setContentView(R.layout.activity_history);
         activeWorkout = new ActiveWorkout();
 
@@ -86,12 +86,6 @@ public class History extends AppCompatActivity {
                         });
                 AlertDialog alertDialog = builder.create();
                         alertDialog.show();
-
-
-
-
-
-
             }
         });
 
@@ -105,16 +99,17 @@ public class History extends AppCompatActivity {
     }
 
     public void generateAllDate(){
-        HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY,json");
+        HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY.json");
         if(historyData == null){
             return;
         }
         int index = 0;
         while(index < historyData.getHistoryList().size()){
             Date date = historyData.getDate(index);
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             String strDate = dateFormat.format(date);
             dateList.add(strDate);
+            index++;
         }
     }
 
@@ -129,6 +124,22 @@ public class History extends AppCompatActivity {
             workoutList.add(workout);
         }
 
+    }
+
+    public void makeHistoryFile(){
+        Workout w = new Workout();
+        w.setName("Workout");
+        HistoryData historyDa = new HistoryData();
+        Record r1 = new Record();
+        r1.setRecord(w);
+        Record r2 = new Record();
+        r2.setRecord(w);
+        Record r3 = new Record();
+        r3.setRecord(w);
+        historyDa.addHistory(r1);
+        historyDa.addHistory(r2);
+        historyDa.addHistory(r3);
+        Json.saveToJson(getApplicationContext(),historyDa,"HISTORY.json");
     }
 
     public void openWorkoutDescription(){

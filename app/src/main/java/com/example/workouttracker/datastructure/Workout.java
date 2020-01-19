@@ -11,6 +11,7 @@ public class Workout implements Serializable {
     public Workout() {
         name = "";
         cycles = new ArrayList<>();
+        index = -10;
     }
 
     public Workout(String name, ArrayList<Cycle> cycles) {

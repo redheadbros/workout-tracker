@@ -71,7 +71,13 @@ public class WorkoutEditor extends AppCompatActivity {
         if(workoutList == null){
             workoutList = new WorkoutList();
         }
-        workoutList.addWorkout(workout);
+        if(workout.getIndex() == -10){
+            workoutList.addWorkout(workout);
+        }else{
+           ArrayList<Workout> ar= workoutList.getWorkoutList();
+           ar.set(workout.getIndex(),workout);
+           workoutList.setWorkoutList(ar);
+        }
         Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
         Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
         startActivity(mainScreen);
