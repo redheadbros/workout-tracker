@@ -16,6 +16,7 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
   public static class ActiveExerciseViewHolder extends RecyclerView.ViewHolder {
     public LinearLayout linearLayout;
+    public int exerciseIndex;
     public ActiveExerciseViewHolder(LinearLayout l) {
       super(l);
       linearLayout = l;
@@ -47,6 +48,10 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
   @Override
   public void onBindViewHolder(ActiveExerciseViewHolder holder, final int position) {
+    //store position data
+    holder.exerciseIndex = position;
+
+    //find the children
     Exercise currentExercise = exercises.get(position);
     LinearLayout exerciseTitleLayout = (LinearLayout) holder.linearLayout.getChildAt(0);
     TextView exerciseTitle = (TextView) exerciseTitleLayout.getChildAt(0);
@@ -65,6 +70,7 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
   @Override
   public void onViewRecycled(ActiveExerciseViewHolder holder) {
+    //TODO
 
   }
 

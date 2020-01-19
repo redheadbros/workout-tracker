@@ -2,9 +2,7 @@ package com.example.workouttracker;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,13 +14,24 @@ import com.example.workouttracker.datastructure.Workout;
 
 import java.util.ArrayList;
 
-public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdapter.ActiveWorkoutViewHolder> {
+public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdapter.ActiveCycleViewHolder> {
 
-  public static class ActiveWorkoutViewHolder extends RecyclerView.ViewHolder {
-    public LinearLayout linearLayout;
-    public ActiveWorkoutViewHolder(LinearLayout l) {
+  public static class ActiveCycleViewHolder extends RecyclerView.ViewHolder {
+    public LinearLayout cycleLayout;
+    public LinearLayout cycleTitleLayout;
+    public TextView titleView;
+    public LinearLayout counterLayout;
+    public RecyclerView exerciseView;
+
+    public int cycleIndex;
+
+    public ActiveCycleViewHolder(LinearLayout l) {
       super(l);
-      linearLayout = l;
+      cycleLayout = l;
+      cycleTitleLayout = (LinearLayout) cycleLayout.getChildAt(0);
+      titleView = (TextView) cycleTitleLayout.getChildAt(0);
+      counterLayout = (LinearLayout) cycleTitleLayout.getChildAt(1);
+      exerciseView = (RecyclerView) cycleLayout.getChildAt(1);
     }
   }
 
@@ -39,44 +48,44 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
   }
 
   @Override
-  public ActiveWorkoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public ActiveCycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
     LinearLayout linearLayout = (LinearLayout) LayoutInflater.from(parent.getContext())
         .inflate(R.layout.active_workout_cycle_view, parent, false);
 
-    ActiveWorkoutViewHolder holder = new ActiveWorkoutViewHolder(linearLayout);
+    ActiveCycleViewHolder holder = new ActiveCycleViewHolder(linearLayout);
     return holder;
   }
 
   @Override
-  public void onBindViewHolder(ActiveWorkoutViewHolder holder, final int position) {
-    //set title of textview
-    LinearLayout cycleTitleLayout = (LinearLayout) holder.linearLayout.getChildAt(0);
-    TextView cycleTitleTextView = (TextView) cycleTitleLayout.getChildAt(0);
+  public void onBindViewHolder(ActiveCycleViewHolder holder, final int position) {
+    //store position data
+    holder.cycleIndex = position;
 
-    //add on the number of repetitions, i.e. Cycle Name (x3)
+    //set title of textView
+    //  add on the number of repetitions, i.e. Cycle Name (x3)
     Cycle currentCycle = cycles.get(position);
     String cycleTitleText = currentCycle.getName() + " (x";
     cycleTitleText += currentCycle.getCycleRepetitions() + ")";
 
-    cycleTitleTextView.setText(cycleTitleText);
+    holder.titleView.setText(cycleTitleText);
 
     //setup counter
-    LinearLayout counterLayout = (LinearLayout) cycleTitleLayout.getChildAt(1);
-    CustomCounterHelper.setupCycleCounter(counterLayout,workout, progress, position);
+    CustomCounterHelper.setupCycleCounter(holder.counterLayout,workout, progress, position);
 
     //setup recyclerView
-    RecyclerView exerciseView = (RecyclerView) holder.linearLayout.getChildAt(1);
     LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-    exerciseView.setLayoutManager(layoutManager);
+    holder.exerciseView.setLayoutManager(layoutManager);
 
     ActiveCycleAdapter adapter = new ActiveCycleAdapter(workout, position, progress);
-    exerciseView.setAdapter(adapter);
+    holder.exerciseView.setAdapter(adapter);
   }
 
   @Override
-  public void onViewRecycled(ActiveWorkoutViewHolder holder) {
-
+  public void onViewRecycled(ActiveCycleViewHolder holder) {
+    TextView counterTextView = (TextView) holder.counterLayout.getChildAt(1);
+    int cyclesCompleted = Integer.parseInt((String) counterTextView.getText());
+    progress.setCyclesCompleted(holder.cycleIndex, cyclesCompleted);
   }
 
   @Override
