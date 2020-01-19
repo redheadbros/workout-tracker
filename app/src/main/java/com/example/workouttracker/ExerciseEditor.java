@@ -110,7 +110,7 @@ public class ExerciseEditor extends AppCompatActivity{
         finish();
     }
 
-    public void goback(View v){
+    public void goBack(View v){
         Intent cycleEditor = new Intent(ExerciseEditor.this, CyclesEditor.class);
         cycleEditor.putExtra("workout",workout);
         cycleEditor.putExtra("cycleIndex",cycleIndex);

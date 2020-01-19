@@ -43,7 +43,7 @@ public class WorkoutDescription2 extends AppCompatActivity {
     //prepare the recycler view
     recyclerView = findViewById(R.id.description_recycler_view);
     layoutManager = new LinearLayoutManager(this);
-    recyclerView.setLayoutManager(layoutManager);
+    recyclerView.setLayoutManager(layoutManager);   
 
     //setup description
     Intent intent = getIntent();
