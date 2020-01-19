@@ -14,7 +14,6 @@ import android.widget.ListView;
 
 import com.example.workouttracker.datastructure.HistoryData;
 import com.example.workouttracker.datastructure.Json;
-import com.example.workouttracker.datastructure.Record;
 import com.example.workouttracker.datastructure.Workout;
 
 import java.text.DateFormat;
@@ -135,30 +134,9 @@ public class History extends AppCompatActivity {
         return newWorkoutList;
     }
 
-    public void makeSampleHistoryFile(){
-        Workout w = new Workout();
-        w.setName("Workout");
-        HistoryData historyDa = new HistoryData();
-        Record r1 = new Record();
-        r1.setRecord(w);
-        Record r2 = new Record();
-        r2.setRecord(w);
-        Record r3 = new Record();
-        r3.setRecord(w);
-        historyDa.addHistory(r1);
-        historyDa.addHistory(r2);
-        historyDa.addHistory(r3);
-        Json.saveToJson(getApplicationContext(),historyDa,"HISTORY.json");
-    }
-
     public void clearHistory(){
         HistoryData nothing = new HistoryData();
         Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
-    }
-    public void openWorkoutDescription(){
-        Intent intent = new Intent(this, ActiveWorkout.class);
-        startActivity(intent);
-        finish();
     }
 
 
