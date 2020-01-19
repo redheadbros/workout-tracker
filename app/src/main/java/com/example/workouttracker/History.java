@@ -26,22 +26,21 @@ import java.util.Date;
 public class History extends AppCompatActivity {
     ListView listView;
     ImageView imageView;
-    ArrayList<String> dateList = new ArrayList<>();
-    ArrayList<Workout> workoutList = new ArrayList<>();
+    ArrayList<String> dateList;
+    ArrayList<Workout> workoutList;
     ArrayAdapter<String> adapter;
     Button clearButton;
-    private ActiveWorkout activeWorkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        makeHistoryFile();
-        generateAllDates();
-        generateAllWorkouts();
         setContentView(R.layout.activity_history);
-        activeWorkout = new ActiveWorkout();
 
-        dateList = new ArrayList<String>();
+        //get data from history file, fill date and workout lists
+        makeSampleHistoryFile();
+
+        dateList = getDates();
+        workoutList = getWorkouts();
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,dateList);
 
@@ -51,8 +50,7 @@ public class History extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSelectWorkout();
-
+                finish();
             }
         });
 
@@ -64,6 +62,7 @@ public class History extends AppCompatActivity {
                 Intent gotoWorkoutDescription = new Intent(History.this,
                     WorkoutDescription.class);
                 gotoWorkoutDescription.putExtra("workout", workoutList.get(position));
+                startActivity(gotoWorkoutDescription);
             }
         });
 
@@ -100,41 +99,46 @@ public class History extends AppCompatActivity {
 
 
     }
-    public void openSelectWorkout() {
-        Intent intent = new Intent(this, SelectWorkout.class);
-        startActivity(intent);
-    }
 
-    public void generateAllDates(){
+    public ArrayList<String> getDates(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY.json");
         if(historyData == null){
-            return;
+            return new ArrayList<>();
         }
+
+        //setup dateList
+        ArrayList<String> newDateList = new ArrayList<>();
         int index = 0;
         while(index < historyData.getHistoryList().size()){
             Date date = historyData.getDate(index);
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             String strDate = dateFormat.format(date);
-            dateList.add(strDate);
+            newDateList.add(strDate);
             index++;
         }
+
+        return newDateList;
     }
 
-    public void generateAllWorkouts(){
+    public ArrayList<Workout> getWorkouts(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(),HistoryData.class,"HISTORY.json");
         if(historyData == null){
-            return;
+            return new ArrayList<>();
         }
+
+        //setup workout list
+        ArrayList<Workout> newWorkoutList = new ArrayList<>();
         int index = 0;
         while(index < historyData.getHistoryList().size()){
             Workout workout = historyData.getWorkout(index);
-            workoutList.add(workout);
+            newWorkoutList.add(workout);
             index++;
         }
 
+        return newWorkoutList;
     }
 
-    public void makeHistoryFile(){
+    public void makeSampleHistoryFile(){
         Workout w = new Workout();
         w.setName("Workout");
         HistoryData historyDa = new HistoryData();
