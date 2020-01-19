@@ -36,7 +36,8 @@ public class History extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         makeHistoryFile();
-        generateAllDate();
+        generateAllDates();
+        generateAllWorkouts();
         setContentView(R.layout.activity_history);
         activeWorkout = new ActiveWorkout();
 
@@ -58,20 +59,10 @@ public class History extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Bundle bundle = new Bundle();
-
-                if(position == 0){
-                    Intent intent = new Intent(History.this, ActiveWorkout.class);
-                    startActivity(intent);
-                }
-
-                else if(position == 1){
-                   Intent intent = new Intent(History.this, ActiveWorkout.class);
-                   startActivity(intent);
-
-                }
-
+                //goto appropriate workout description
+                Intent gotoWorkoutDescription = new Intent(History.this,
+                    WorkoutDescription.class);
+                gotoWorkoutDescription.putExtra("workout", workoutList.get(position));
             }
         });
 
@@ -111,7 +102,7 @@ public class History extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void generateAllDate(){
+    public void generateAllDates(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY.json");
         if(historyData == null){
             return;
@@ -126,7 +117,7 @@ public class History extends AppCompatActivity {
         }
     }
 
-    public void generateAllWorkout(){
+    public void generateAllWorkouts(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(),HistoryData.class,"HISTORY.json");
         if(historyData == null){
             return;
