@@ -12,6 +12,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 
@@ -27,6 +29,20 @@ public class ActiveWorkout extends AppCompatActivity {
     setContentView(R.layout.activity_active_workout);
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    //get input workout
+    Intent intent = getIntent();
+    workout = (Workout) intent.getSerializableExtra("workout");
+
+    //setup recyclerView:
+    //set layout manager
+    RecyclerView workoutView = findViewById(R.id.active_workout_recycler_view);
+    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+    workoutView.setLayoutManager(layoutManager);
+
+    //set adapter
+    ActiveWorkoutAdapter adapter = new ActiveWorkoutAdapter(this, workout);
+    workoutView.setAdapter(adapter);
   }
 
   public void finishWorkout(View v) {
