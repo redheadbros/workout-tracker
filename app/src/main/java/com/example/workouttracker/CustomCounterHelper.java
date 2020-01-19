@@ -5,50 +5,33 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.workouttracker.datastructure.Workout;
+
 public class CustomCounterHelper {
 
-  public static void setupCycleCounter(LinearLayout counterLayout, final WorkoutProgress progress,
-                                final int cycleIndex) {
+  public static void setupCycleCounter(LinearLayout counterLayout, Workout workout, WorkoutProgress progress,
+                                       int cycleIndex) {
+    //find max counter value
+    final int maxValue = workout.getCycles().get(cycleIndex).getCycleRepetitions();
+
     //setup counter value
     TextView counterText = (TextView) counterLayout.getChildAt(1);
     counterText.setText(String.valueOf(progress.getCyclesCompleted(cycleIndex)));
 
-    //get buttons
+    //get & setup buttons
     Button minus = (Button) counterLayout.getChildAt(0);
     Button plus = (Button) counterLayout.getChildAt(2);
 
-    //setup minus button
-    minus.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        //change progress
-        progress.setCyclesCompleted(cycleIndex, progress.getCyclesCompleted(cycleIndex) - 1);
-
-        //update text view
-        LinearLayout cycleCounterLayout = (LinearLayout) v.getParent();
-        TextView cycleCounterTextView = (TextView) cycleCounterLayout.getChildAt(1);
-        cycleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(cycleIndex)));
-      }
-    });
-
-    //setup plus button
-    plus.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        //change progress
-        progress.setCyclesCompleted(cycleIndex, progress.getCyclesCompleted(cycleIndex) + 1);
-
-        //update text view
-        LinearLayout cycleCounterLayout = (LinearLayout) v.getParent();
-        TextView cycleCounterTextView = (TextView) cycleCounterLayout.getChildAt(1);
-        cycleCounterTextView.setText(String.valueOf(progress.getCyclesCompleted(cycleIndex)));
-      }
-    });
-
+    setupButton(-1, maxValue, minus);
+    setupButton(1, maxValue, plus);
   }
 
-  public static void setupSetCounter(LinearLayout counterLayout, final WorkoutProgress progress,
-                              final int cycleIndex, final int exerciseIndex) {
+  public static void setupSetCounter(LinearLayout counterLayout, Workout workout,
+                                     WorkoutProgress progress, int cycleIndex, int exerciseIndex) {
+    //find max counter value
+    final int maxValue = workout.getCycles().get(cycleIndex)
+        .getExercises().get(exerciseIndex).getSets();
+
     //setup counter value
     TextView counterText = (TextView) counterLayout.getChildAt(1);
     counterText.setText(String.valueOf(progress.getSetsCompleted(cycleIndex, exerciseIndex)));
@@ -58,16 +41,25 @@ public class CustomCounterHelper {
     Button plus = (Button) counterLayout.getChildAt(2);
 
     //setup minus button
-    minus.setOnClickListener(new View.OnClickListener() {
+    setupButton(-1, maxValue, minus);
+    setupButton(1, maxValue, plus);
+  }
+
+  private static void setupButton(final int increment, final int maxValue, Button button) {
+    button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        //change progress
-        progress.setSetsCompleted(cycleIndex, exerciseIndex, progress.getCyclesCompleted(cycleIndex) - 1);
+        //get current value from textView
+        LinearLayout cycleCounterLayout = (LinearLayout) v.getParent();
+        TextView cycleCounterTextView = (TextView) cycleCounterLayout.getChildAt(1);
+        int currentCyclesCompleted = Integer.parseInt((String) cycleCounterTextView.getText());
 
         //update text view
-        LinearLayout setCounterLayout = (LinearLayout) v.getParent();
-        TextView setCounterTextView = (TextView) setCounterLayout.getChildAt(1);
-        setCounterTextView.setText(String.valueOf(progress.getSetsCompleted(cycleIndex, exerciseIndex)));
+        //note: 'clamp' function formula:
+        // https://stackoverflow.com/questions/16656651/does-java-have-a-clamp-function
+        currentCyclesCompleted += increment;
+        currentCyclesCompleted = Math.max(0, Math.min(maxValue, currentCyclesCompleted)); //clamp
+        cycleCounterTextView.setText(String.valueOf(currentCyclesCompleted));
       }
     });
   }

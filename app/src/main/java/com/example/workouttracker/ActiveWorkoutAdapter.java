@@ -63,7 +63,7 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
 
     //setup counter
     LinearLayout counterLayout = (LinearLayout) cycleTitleLayout.getChildAt(1);
-    CustomCounterHelper.setupCycleCounter(counterLayout, progress, position);
+    CustomCounterHelper.setupCycleCounter(counterLayout,workout, progress, position);
 
     //setup recyclerView
     RecyclerView exerciseView = (RecyclerView) holder.linearLayout.getChildAt(1);
@@ -74,6 +74,12 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
     exerciseView.setAdapter(adapter);
   }
 
+  @Override
+  public void onViewRecycled(ActiveWorkoutViewHolder holder) {
+
+  }
+
+  @Override
   public int getItemCount() {
     return cycles.size();
   }

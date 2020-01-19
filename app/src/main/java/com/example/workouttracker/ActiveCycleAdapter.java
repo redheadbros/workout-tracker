@@ -25,9 +25,11 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
   private ArrayList<Exercise> exercises;
   private WorkoutProgress progress;
   private int cycleIndex;
+  private Workout workout;
 
   public ActiveCycleAdapter(Workout toTrack, int currentCycleIndex,
                             WorkoutProgress workoutProgress) {
+    workout = toTrack;
     cycleIndex = currentCycleIndex;
     exercises = toTrack.getCycles().get(cycleIndex).getExercises();
     progress = workoutProgress;
@@ -54,11 +56,16 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
     //setup counter
     LinearLayout counterLayout = (LinearLayout) exerciseTitleLayout.getChildAt(1);
-    CustomCounterHelper.setupSetCounter(counterLayout, progress, cycleIndex, position);
+    CustomCounterHelper.setupSetCounter(counterLayout, workout, progress, cycleIndex, position);
 
     //set exercise description
     TextView description = (TextView) holder.linearLayout.getChildAt(1);
     description.setText(currentExercise.getDescription());
+  }
+
+  @Override
+  public void onViewRecycled(ActiveExerciseViewHolder holder) {
+
   }
 
   @Override
