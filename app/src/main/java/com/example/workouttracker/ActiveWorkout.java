@@ -46,13 +46,10 @@ public class ActiveWorkout extends AppCompatActivity {
   }
 
   public void finishWorkout(View v) {
-    //Intent gotoDescription = new Intent(ActiveWorkout.this, WorkoutDescription.class);
-
-    //startActivity(gotoDescription);
-
+    Intent gotoMainScreen = new Intent(ActiveWorkout.this, SelectWorkout.class);
     record.setRecord(workout);
     saveHistory();
-
+    startActivity(gotoMainScreen);
     finish();
   }
 
