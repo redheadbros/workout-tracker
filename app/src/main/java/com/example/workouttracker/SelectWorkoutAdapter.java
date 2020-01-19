@@ -52,6 +52,7 @@ public class SelectWorkoutAdapter extends RecyclerView.Adapter<SelectWorkoutAdap
         Intent gotoWorkoutDes = new Intent(context, WorkoutDescription.class);
         gotoWorkoutDes.putExtra("workout", workouts.get(position));
         gotoWorkoutDes.putExtra("index", position);
+        gotoWorkoutDes.putExtra("history", false);
         context.startActivity(gotoWorkoutDes);
       }
     });

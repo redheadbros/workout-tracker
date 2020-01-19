@@ -19,15 +19,15 @@ import java.util.ArrayList;
 
 public class CyclesEditor extends AppCompatActivity {
 
-    Cycle cycle = new Cycle();
-    Workout workout;
-    Workout originWorkout;
+    private Cycle cycle = new Cycle();
+    private Workout workout;
+    private Workout originWorkout;
     private int cycleIndex;
     private int numberOfCycle = 1;
-    TextView cycleNum;
-    EditText cycleName;
-    String defaultName;
-    RecyclerView allExercises;
+    private TextView cycleNum;
+    private EditText cycleName;
+    private String defaultName;
+    private RecyclerView allExercises;
 
 
     @Override
@@ -47,7 +47,7 @@ public class CyclesEditor extends AppCompatActivity {
             ArrayList<Cycle> cycles = workout.getCycles();
             cycles.add(cycle);
             workout.setCycles(cycles);
-            defaultName = "Cycle" + String.valueOf(cycleIndex + 1);
+            defaultName = "Cycle " + (cycleIndex + 1);
         }else {
             cycle = workout.getCycles().get(cycleIndex);
             defaultName = cycle.getName();
@@ -60,15 +60,6 @@ public class CyclesEditor extends AppCompatActivity {
         allExercises.setLayoutManager(layoutManager);
         CycleEditorAdapter adapter = new CycleEditorAdapter(this, workout,cycleIndex);
         allExercises.setAdapter(adapter);
-    }
-
-    public void EditExercise(View v, int exerciseIndex){
-        Intent editExercise = new Intent(CyclesEditor.this, ExerciseEditor.class);
-        editExercise.putExtra("exerciseIndex",exerciseIndex);
-        editExercise.putExtra("workout",workout);
-        editExercise.putExtra("cycleIndex",cycleIndex);
-        startActivity(editExercise);
-        finish();
     }
 
     public void newExercise(View v){

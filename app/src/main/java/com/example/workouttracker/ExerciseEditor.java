@@ -25,11 +25,11 @@ public class ExerciseEditor extends AppCompatActivity{
     private Cycle cycle;
     private Workout workout;
     private Boolean editingMode = false;
-    TextView setsNum;
-    EditText exerciseName;
-    EditText exerciseDes;
-    Exercise exercise;
-    String defaultName;
+    private TextView setsNum;
+    private EditText exerciseName;
+    private EditText exerciseDes;
+    private Exercise exercise;
+    private String defaultName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class ExerciseEditor extends AppCompatActivity{
         cycleIndex = (int)cycleEditorData.getSerializableExtra("cycleIndex");
         cycle = workout.getCycles().get(cycleIndex);
         exerciseList = cycle.getExercises();
-        setContentView(R.layout.activity_exercise_editior);
+        setContentView(R.layout.activity_exercise_editor);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setsNum = findViewById(R.id.numOfSets);
@@ -48,7 +48,7 @@ public class ExerciseEditor extends AppCompatActivity{
         exerciseDes = findViewById(R.id.getDescription);
         if(exerciseIndex == exerciseList.size()){
             exercise = new Exercise();
-            defaultName = "Exercise" + String.valueOf(exerciseIndex + 1);
+            defaultName = "Exercise " + (exerciseIndex + 1);
         }else{
             editingMode = true;
             exercise = exerciseList.get(exerciseIndex);
@@ -110,7 +110,7 @@ public class ExerciseEditor extends AppCompatActivity{
         finish();
     }
 
-    public void goback(View v){
+    public void goBack(View v){
         Intent cycleEditor = new Intent(ExerciseEditor.this, CyclesEditor.class);
         cycleEditor.putExtra("workout",workout);
         cycleEditor.putExtra("cycleIndex",cycleIndex);

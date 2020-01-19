@@ -11,7 +11,7 @@
         android:id="@+id/toolbar4"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#E53935"
+        android:background="#A8452F"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -28,7 +28,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/content_exercise_editior"
+        layout="@layout/content_exercise_editor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

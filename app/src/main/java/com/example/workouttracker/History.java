@@ -9,13 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.workouttracker.datastructure.HistoryData;
 import com.example.workouttracker.datastructure.Json;
-import com.example.workouttracker.datastructure.Record;
 import com.example.workouttracker.datastructure.Workout;
 
 import java.text.DateFormat;
@@ -24,29 +22,26 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class History extends AppCompatActivity {
-    ListView listView;
-    ImageView imageView;
-    ArrayList<String> dateList;
-    ArrayList<Workout> workoutList;
-    ArrayAdapter<String> adapter;
-    Button clearButton;
+    private ListView listView;
+    private ImageView imageView;
+    private ArrayList<String> dateList;
+    private ArrayList<Workout> workoutList;
+    private ArrayAdapter<String> adapter;
+    private ImageView clearHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        //get data from history file, fill date and workout lists
-        makeSampleHistoryFile();
-
         dateList = getDates();
         workoutList = getWorkouts();
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,dateList);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,dateList);
 
 
 
-        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +49,7 @@ public class History extends AppCompatActivity {
             }
         });
 
-        listView = (ListView)findViewById(R.id.listview);
+        listView = findViewById(R.id.listview);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -62,6 +57,7 @@ public class History extends AppCompatActivity {
                 Intent gotoWorkoutDescription = new Intent(History.this,
                     WorkoutDescription.class);
                 gotoWorkoutDescription.putExtra("workout", workoutList.get(position));
+                gotoWorkoutDescription.putExtra("history",true);
                 startActivity(gotoWorkoutDescription);
             }
         });
@@ -70,8 +66,8 @@ public class History extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
 
-        clearButton = (Button)findViewById(R.id.button2);
-        clearButton.setOnClickListener(new View.OnClickListener() {
+        clearHistory = findViewById(R.id.imageView7);
+        clearHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(History.this);
@@ -100,7 +96,7 @@ public class History extends AppCompatActivity {
 
     }
 
-    public ArrayList<String> getDates(){
+    private ArrayList<String> getDates(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY.json");
         if(historyData == null){
             return new ArrayList<>();
@@ -120,7 +116,7 @@ public class History extends AppCompatActivity {
         return newDateList;
     }
 
-    public ArrayList<Workout> getWorkouts(){
+    private ArrayList<Workout> getWorkouts(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(),HistoryData.class,"HISTORY.json");
         if(historyData == null){
             return new ArrayList<>();
@@ -138,30 +134,9 @@ public class History extends AppCompatActivity {
         return newWorkoutList;
     }
 
-    public void makeSampleHistoryFile(){
-        Workout w = new Workout();
-        w.setName("Workout");
-        HistoryData historyDa = new HistoryData();
-        Record r1 = new Record();
-        r1.setRecord(w);
-        Record r2 = new Record();
-        r2.setRecord(w);
-        Record r3 = new Record();
-        r3.setRecord(w);
-        historyDa.addHistory(r1);
-        historyDa.addHistory(r2);
-        historyDa.addHistory(r3);
-        Json.saveToJson(getApplicationContext(),historyDa,"HISTORY.json");
-    }
-
-    public void clearHistory(){
+    private void clearHistory(){
         HistoryData nothing = new HistoryData();
         Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
-    }
-    public void openWorkoutDescription(){
-        Intent intent = new Intent(this, ActiveWorkout.class);
-        startActivity(intent);
-        finish();
     }
 
 

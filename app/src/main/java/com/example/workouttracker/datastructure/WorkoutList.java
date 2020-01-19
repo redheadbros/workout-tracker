@@ -6,7 +6,7 @@ public class WorkoutList {
     private ArrayList<Workout> workoutList;
 
     public WorkoutList(){
-        workoutList = new ArrayList<Workout>();
+        workoutList = new ArrayList<>();
     }
 
     public ArrayList<Workout> getWorkoutList() {

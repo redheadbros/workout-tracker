@@ -18,10 +18,6 @@ public class HistoryData {
         historyList.add(record);
     }
 
-    public void setHistoryList(ArrayList<Record> historyList){
-        this.historyList = historyList;
-    }
-
     public ArrayList<Record> getHistoryList() {
         return historyList;
     }
@@ -32,9 +28,5 @@ public class HistoryData {
 
     public Date getDate(int index){
         return historyList.get(index).getDate();
-    }
-
-    public Record getRecord(int index){
-        return historyList.get(index);
     }
 }
