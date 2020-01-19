@@ -63,6 +63,7 @@ public class WorkoutEditor extends AppCompatActivity {
 
     public void newCycle(View v){
         Intent newCycle = new Intent(WorkoutEditor.this, CyclesEditor.class);
+        workout.setName(nameOfWorkout.getText().toString());
         newCycle.putExtra("workout",workout);
         newCycle.putExtra("cycleIndex",workout.getCycles().size());
         startActivity(newCycle);

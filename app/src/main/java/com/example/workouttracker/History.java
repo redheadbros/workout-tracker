@@ -42,7 +42,7 @@ public class History extends AppCompatActivity {
 
         dateList = new ArrayList<String>();
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dateList);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,dateList);
 
 
         imageView = (ImageView)findViewById(R.id.imageView);
@@ -58,7 +58,19 @@ public class History extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                openWorkoutDescription();
+
+                Bundle bundle = new Bundle();
+
+                if(position == 0){
+                    Intent intent = new Intent(History.this, ActiveWorkout.class);
+                    startActivity(intent);
+                }
+
+                else if(position == 1){
+                   Intent intent = new Intent(History.this, ActiveWorkout.class);
+                   startActivity(intent);
+
+                }
 
             }
         });
@@ -75,6 +87,7 @@ public class History extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                clearHistory();
 
                             }
                         })
@@ -122,6 +135,7 @@ public class History extends AppCompatActivity {
         while(index < historyData.getHistoryList().size()){
             Workout workout = historyData.getWorkout(index);
             workoutList.add(workout);
+            index++;
         }
 
     }
@@ -143,7 +157,7 @@ public class History extends AppCompatActivity {
     }
 
     public void openWorkoutDescription(){
-        generateAllWorkout();
+
     }
 
     public void clearHistory(){
