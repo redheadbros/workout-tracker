@@ -37,6 +37,7 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         makeHistoryFile();
         generateAllDate();
+
         setContentView(R.layout.activity_history);
         activeWorkout = new ActiveWorkout();
 
@@ -122,6 +123,7 @@ public class History extends AppCompatActivity {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             String strDate = dateFormat.format(date);
             dateList.add(strDate);
+            adapter.notifyDataSetChanged();
             index++;
         }
     }
@@ -135,6 +137,7 @@ public class History extends AppCompatActivity {
         while(index < historyData.getHistoryList().size()){
             Workout workout = historyData.getWorkout(index);
             workoutList.add(workout);
+            adapter.notifyDataSetChanged();
             index++;
         }
 
@@ -156,13 +159,16 @@ public class History extends AppCompatActivity {
         Json.saveToJson(getApplicationContext(),historyDa,"HISTORY.json");
     }
 
-    public void openWorkoutDescription(){
 
-    }
 
     public void clearHistory(){
         HistoryData nothing = new HistoryData();
         Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
+    }
+    public void openWorkoutDescription(){
+        Intent intent = new Intent(this, ActiveWorkout.class);
+        startActivity(intent);
+        finish();
     }
 
 
