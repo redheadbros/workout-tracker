@@ -77,35 +77,4 @@ public class SelectWorkout extends AppCompatActivity {
     startActivity(gotoWorkoutEditor);
   }
 
-
-  private WorkoutList getSampleWorkoutList() {
-    //workout 1
-    Exercise e1 = new Exercise("exercise 1:", "bro do you even lift", 69);
-    ArrayList<Exercise> exercises1 = new ArrayList<>();
-    exercises1.add(e1);
-    Cycle c1 = new Cycle("Buff dude time", exercises1, 420);
-    ArrayList<Cycle> cycles1 = new ArrayList<>();
-    cycles1.add(c1);
-
-    //workout 2
-    Exercise e2 = new Exercise("exercise 2:", "bro do you even sift", 68);
-    ArrayList<Exercise> exercises2 = new ArrayList<>();
-    exercises2.add(e2);
-    Cycle c2 = new Cycle("Tuff dude time", exercises2, 421);
-    ArrayList<Cycle> cycles2 = new ArrayList<>();
-    cycles2.add(c2);
-
-    //by your powers combined
-    Workout w1 = new Workout("Test workout 1", cycles1);
-    Workout w2 = new Workout("Test Workout 2", cycles2);
-    ArrayList<Workout> testWorkouts = new ArrayList<>();
-    testWorkouts.add(w1);
-    testWorkouts.add(w2);
-
-    //create workout list
-    WorkoutList workoutList = new WorkoutList();
-    workoutList.setWorkoutList(testWorkouts);
-
-    return workoutList;
-  }
 }

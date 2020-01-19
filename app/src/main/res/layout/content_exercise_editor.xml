@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ExerciseEditor"
-    tools:showIn="@layout/activity_exercise_editior">
+    tools:showIn="@layout/activity_exercise_editor">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
