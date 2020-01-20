@@ -137,6 +137,7 @@ public class History extends AppCompatActivity {
     private void clearHistory(){
         HistoryData nothing = new HistoryData();
         Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
+        recreate();
     }
 
 
