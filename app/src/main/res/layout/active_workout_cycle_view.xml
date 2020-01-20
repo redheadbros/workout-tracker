@@ -12,8 +12,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
             android:layout_weight="1"
-            android:text="FIRE" />
+            android:text="FIRE"
+            android:textColor="#000000"
+            android:textSize="24dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -23,6 +27,9 @@
             <Button
                 android:layout_width="@dimen/workout_counter_button_width"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custombutton"
                 android:text="-" />
 
@@ -30,13 +37,17 @@
                 android:layout_width="@dimen/workout_counter_button_width"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="AAAAA" />
+                android:text="AAAAA"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"/>
 
             <Button
                 android:layout_width="@dimen/workout_counter_button_width"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custombutton"
-                android:text="+" />
+                android:text="+"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"/>
 
         </LinearLayout>
 
@@ -44,6 +55,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>
