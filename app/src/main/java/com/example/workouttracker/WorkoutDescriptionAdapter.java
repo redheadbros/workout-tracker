@@ -23,6 +23,9 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
   private ArrayList<Cycle> cycles;
   private Context context;
 
+  private final int CYCLE_TITLE_VIEW_INDEX = 0;
+  private final int EXERCISE_LIST_INDEX = 1;
+
   //contains class for holding views for part of the description
   public static class CycleViewHolder extends RecyclerView.ViewHolder {
     public LinearLayout linearLayout;
@@ -58,11 +61,11 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
     Cycle cycle = cycles.get(position);
     String titleText = cycle.getName() + " (x";
     titleText += cycle.getCycleRepetitions() + ")";
-    TextView titleView = (TextView) holder.linearLayout.getChildAt(0);
+    TextView titleView = (TextView) holder.linearLayout.getChildAt(CYCLE_TITLE_VIEW_INDEX);
     titleView.setText(titleText);
 
     //setup exercise list
-    ListView exerciseList = (ListView) holder.linearLayout.getChildAt(1);
+    ListView exerciseList = (ListView) holder.linearLayout.getChildAt(EXERCISE_LIST_INDEX);
 
     CycleDescriptionAdapter adapter = new CycleDescriptionAdapter(context,
         R.layout.exercise_description_view, cycle.getExercises());
