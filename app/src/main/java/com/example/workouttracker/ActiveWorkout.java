@@ -51,6 +51,7 @@ public class ActiveWorkout extends AppCompatActivity {
 
   public void finishWorkout(View v) {
     Intent gotoMainScreen = new Intent(ActiveWorkout.this, SelectWorkout.class);
+    workout.setIndex(-10);
     record.setRecord(workout);
     saveHistory();
     startActivity(gotoMainScreen);
