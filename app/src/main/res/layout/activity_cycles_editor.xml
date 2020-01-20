@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout2"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CyclesEditor">
 
@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#A8452F"
+        app:layout_constraintBottom_toBottomOf="@+id/deleteButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -60,20 +61,18 @@
         android:id="@+id/numOfCycles"
         android:layout_width="80dp"
         android:layout_height="109dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="36dp"
         android:gravity="center"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/newExercise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sets" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/minusSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="41dp"
         android:layout_marginRight="41dp"
@@ -82,7 +81,6 @@
         android:text="-"
         android:textSize="50sp"
         app:layout_constraintEnd_toStartOf="@+id/numOfCycles"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sets" /><![CDATA[
 
 
@@ -107,14 +105,10 @@
         android:layout_marginStart="41dp"
         android:layout_marginLeft="41dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
         android:background="#F9F9F9"
         android:onClick="addNumber"
         android:text="+"
         android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/numOfCycles"
         app:layout_constraintTop_toBottomOf="@+id/sets" />
 
@@ -122,20 +116,19 @@
         android:id="@+id/sets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
+        android:layout_marginBottom="16dp"
         android:text="Number of Cycles"
         android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/numOfCycles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/newExercise"
         android:layout_width="280dp"
         android:layout_height="45dp"
-        android:layout_marginTop="32dp"
         android:layout_marginBottom="35dp"
         android:background="@drawable/custombutton"
         android:gravity="center|center_horizontal"
@@ -145,8 +138,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numOfCycles" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Name"
@@ -191,7 +183,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NameOfCycle" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
