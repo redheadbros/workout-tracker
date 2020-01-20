@@ -96,7 +96,7 @@ public class History extends AppCompatActivity {
 
 
 
-    }
+    } 
 
     private ArrayList<String> getDates(){
         HistoryData historyData = Json.loadFromJson(getApplicationContext(), HistoryData.class,"HISTORY.json");
