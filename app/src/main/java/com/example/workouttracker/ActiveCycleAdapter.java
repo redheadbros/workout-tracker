@@ -63,7 +63,7 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
     //set exercise details
     Exercise currentExercise = exercises.get(position);
-    String exerciseTitle = currentExercise.getName() + " (";
+    String exerciseTitle = currentExercise.getName() + " (x";
     exerciseTitle += currentExercise.getSets() + ")";
     holder.titleView.setText("   " +exerciseTitle);
     holder.descriptionView.setText("      " + currentExercise.getDescription());
