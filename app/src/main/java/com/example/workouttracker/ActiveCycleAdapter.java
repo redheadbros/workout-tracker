@@ -14,6 +14,11 @@ import java.util.ArrayList;
 
 public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.ActiveExerciseViewHolder> {
 
+  private static final int EXERCISE_TITLE_LAYOUT_INDEX = 0;
+  private static final int EXERCISE_DESCRIPTION_VIEW_INDEX = 1;
+  private static final int EXERCISE_TITLE_VIEW_INDEX = 0;
+  private static final int EXERCISE_COUNTER_LAYOUT = 1;
+
   public static class ActiveExerciseViewHolder extends RecyclerView.ViewHolder {
     public LinearLayout exerciseLayout;
     public LinearLayout titleLayout;
@@ -26,10 +31,10 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
     public ActiveExerciseViewHolder(LinearLayout l) {
       super(l);
       exerciseLayout = l;
-      titleLayout = (LinearLayout) exerciseLayout.getChildAt(0);
-      titleView = (TextView) titleLayout.getChildAt(0);
-      counterLayout = (LinearLayout) titleLayout.getChildAt(1);
-      descriptionView = (TextView) exerciseLayout.getChildAt(1);
+      titleLayout = (LinearLayout) exerciseLayout.getChildAt(EXERCISE_TITLE_LAYOUT_INDEX);
+      titleView = (TextView) titleLayout.getChildAt(EXERCISE_TITLE_VIEW_INDEX);
+      counterLayout = (LinearLayout) titleLayout.getChildAt(EXERCISE_COUNTER_LAYOUT);
+      descriptionView = (TextView) exerciseLayout.getChildAt(EXERCISE_DESCRIPTION_VIEW_INDEX);
     }
   }
 
@@ -74,7 +79,7 @@ public class ActiveCycleAdapter extends RecyclerView.Adapter<ActiveCycleAdapter.
 
   @Override
   public void onViewRecycled(ActiveExerciseViewHolder holder) {
-    TextView counterTextView = (TextView) holder.counterLayout.getChildAt(1);
+    TextView counterTextView = (TextView) holder.counterLayout.getChildAt(CustomCounterHelper.COUNTER_TEXT_INDEX);
     int setsCompleted = Integer.parseInt((String) counterTextView.getText());
     progress.setSetsCompleted(cycleIndex, holder.exerciseIndex, setsCompleted);
   }

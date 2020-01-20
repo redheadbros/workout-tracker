@@ -9,18 +9,22 @@ import com.example.workouttracker.datastructure.Workout;
 
 public class CustomCounterHelper {
 
+  static final int COUNTER_MINUS_INDEX = 0;
+  static final int COUNTER_TEXT_INDEX = 1;
+  static final int COUNTER_PLUS_INDEX = 2;
+
   public static void setupCycleCounter(LinearLayout counterLayout, Workout workout, WorkoutProgress progress,
                                        int cycleIndex) {
     //find max counter value
     final int maxValue = workout.getCycles().get(cycleIndex).getCycleRepetitions();
 
     //setup counter value
-    TextView counterText = (TextView) counterLayout.getChildAt(1);
+    TextView counterText = (TextView) counterLayout.getChildAt(COUNTER_TEXT_INDEX);
     counterText.setText(String.valueOf(progress.getCyclesCompleted(cycleIndex)));
 
     //get & setup buttons
-    Button minus = (Button) counterLayout.getChildAt(0);
-    Button plus = (Button) counterLayout.getChildAt(2);
+    Button minus = (Button) counterLayout.getChildAt(COUNTER_MINUS_INDEX);
+    Button plus = (Button) counterLayout.getChildAt(COUNTER_PLUS_INDEX);
 
     setupButton(-1, maxValue, minus);
     setupButton(1, maxValue, plus);
@@ -33,12 +37,12 @@ public class CustomCounterHelper {
         .getExercises().get(exerciseIndex).getSets();
 
     //setup counter value
-    TextView counterText = (TextView) counterLayout.getChildAt(1);
+    TextView counterText = (TextView) counterLayout.getChildAt(COUNTER_TEXT_INDEX);
     counterText.setText(String.valueOf(progress.getSetsCompleted(cycleIndex, exerciseIndex)));
 
     //get buttons
-    Button minus = (Button) counterLayout.getChildAt(0);
-    Button plus = (Button) counterLayout.getChildAt(2);
+    Button minus = (Button) counterLayout.getChildAt(COUNTER_MINUS_INDEX);
+    Button plus = (Button) counterLayout.getChildAt(COUNTER_PLUS_INDEX);
 
     //setup minus button
     setupButton(-1, maxValue, minus);

@@ -16,6 +16,11 @@ import java.util.ArrayList;
 
 public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdapter.ActiveCycleViewHolder> {
 
+private static final int CYCLE_TITLE_LAYOUT_INDEX = 0;
+private static final int EXERCISE_LIST_INDEX = 1;
+private static final int CYCLE_TITLE_VIEW_INDEX = 0;
+private static final int CYCLE_COUNTER_LAYOUT_INDEX = 1;
+
   public static class ActiveCycleViewHolder extends RecyclerView.ViewHolder {
     public LinearLayout cycleLayout;
     public LinearLayout cycleTitleLayout;
@@ -28,10 +33,10 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
     public ActiveCycleViewHolder(LinearLayout l) {
       super(l);
       cycleLayout = l;
-      cycleTitleLayout = (LinearLayout) cycleLayout.getChildAt(0);
-      titleView = (TextView) cycleTitleLayout.getChildAt(0);
-      counterLayout = (LinearLayout) cycleTitleLayout.getChildAt(1);
-      exerciseView = (RecyclerView) cycleLayout.getChildAt(1);
+      cycleTitleLayout = (LinearLayout) cycleLayout.getChildAt(CYCLE_TITLE_LAYOUT_INDEX);
+      titleView = (TextView) cycleTitleLayout.getChildAt(CYCLE_TITLE_VIEW_INDEX);
+      counterLayout = (LinearLayout) cycleTitleLayout.getChildAt(CYCLE_COUNTER_LAYOUT_INDEX);
+      exerciseView = (RecyclerView) cycleLayout.getChildAt(EXERCISE_LIST_INDEX);
     }
   }
 
@@ -81,7 +86,7 @@ public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdap
 
   @Override
   public void onViewRecycled(ActiveCycleViewHolder holder) {
-    TextView counterTextView = (TextView) holder.counterLayout.getChildAt(1);
+    TextView counterTextView = (TextView) holder.counterLayout.getChildAt(CustomCounterHelper.COUNTER_TEXT_INDEX);
     int cyclesCompleted = Integer.parseInt((String) counterTextView.getText());
     progress.setCyclesCompleted(holder.cycleIndex, cyclesCompleted);
   }
