@@ -109,7 +109,7 @@ public class History extends AppCompatActivity {
         int index = 0;
         while(index < historyData.getHistoryList().size()){
             Date date = historyData.getDate(index);
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String strDate = dateFormat.format(date);
             newDateList.add(strDate);
             index++;
