@@ -28,11 +28,15 @@ public class ActiveWorkout extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_active_workout);
     Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
+
 
     //get input workout
     Intent intent = getIntent();
     workout = (Workout) intent.getSerializableExtra("workout");
+
+    //set title
+    toolbar.setTitle(workout.getName());
+    setSupportActionBar(toolbar);
 
     //setup recyclerView:
     //set layout manager

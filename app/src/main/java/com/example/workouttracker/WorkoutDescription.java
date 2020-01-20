@@ -30,12 +30,15 @@ public class WorkoutDescription extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_workout_description);
     Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
 
     //fetch workout from previous page
     Intent intent = getIntent();
     workout = (Workout)intent.getSerializableExtra("workout");
     history = (boolean) intent.getSerializableExtra("history");
+
+    //set title
+    toolbar.setTitle(workout.getName());
+    setSupportActionBar(toolbar);
 
     //setup 'start workout' button
     imageView = (ImageView)findViewById(R.id.imageView2);

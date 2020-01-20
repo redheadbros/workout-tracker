@@ -34,6 +34,8 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        //get data from history file, fill date and workout lists
+
         dateList = getDates();
         workoutList = getWorkouts();
 
@@ -134,9 +136,12 @@ public class History extends AppCompatActivity {
         return newWorkoutList;
     }
 
-    private void clearHistory(){
+
+
+    public void clearHistory(){
         HistoryData nothing = new HistoryData();
         Json.saveToJson(getApplicationContext(),nothing, "HISTORY.json");
+        recreate();
     }
 
 
