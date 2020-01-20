@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/appBarLayout"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
@@ -68,7 +69,6 @@
         android:layout_marginTop="304dp"
         android:layout_marginEnd="96dp"
         android:layout_marginRight="96dp"
-        android:layout_marginBottom="32dp"
         android:baselineAligned="false"
         android:ems="10"
         android:gravity="center"
@@ -79,7 +79,6 @@
         android:singleLine="true"
         android:text=""
         android:textColorHint="#95A1AA"
-        app:layout_constraintBottom_toTopOf="@+id/Sets"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -120,63 +119,54 @@
         android:id="@+id/numOfSets"
         android:layout_width="80dp"
         android:layout_height="109dp"
-        android:layout_marginBottom="173dp"
+        android:layout_marginBottom="60dp"
         android:gravity="center"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/addSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="41dp"
-        android:layout_marginBottom="183dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="32dp"
         android:background="#F9F9F9"
         android:onClick="addNumber"
         android:text="+"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/numOfSets"
+        app:layout_constraintTop_toBottomOf="@+id/Sets" />
 
     <Button
         android:id="@+id/minusSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
-        android:layout_marginBottom="183dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
         android:background="#F9F9F9"
         android:onClick="subtractNumber"
         android:text="-"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@+id/numOfSets"
+        app:layout_constraintTop_toBottomOf="@+id/Sets" />
 
     <TextView
         android:id="@+id/Sets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
         android:text="Sets"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/numOfSets"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getDescription" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/cancelButton"
