@@ -36,7 +36,8 @@ public class CycleDescriptionAdapter extends ArrayAdapter<Exercise> {
 
     //get text to display
     Exercise exerciseToShow = exercises.get(position);
-    String exerciseTitle = exerciseToShow.getName();
+    String exerciseTitle = exerciseToShow.getName() + " (x";
+    exerciseTitle += exerciseToShow.getSets() + ")";
     String exerciseDescription = exerciseToShow.getDescription();
 
     //insert into View
