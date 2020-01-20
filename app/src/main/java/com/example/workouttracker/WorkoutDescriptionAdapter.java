@@ -56,9 +56,10 @@ public class WorkoutDescriptionAdapter extends RecyclerView.Adapter<WorkoutDescr
 
     //setup cycle title
     Cycle cycle = cycles.get(position);
-    String text = cycle.getName();
-    TextView textView = (TextView) holder.linearLayout.getChildAt(0);
-    textView.setText(text);
+    String titleText = cycle.getName() + " (x";
+    titleText += cycle.getCycleRepetitions() + ")";
+    TextView titleView = (TextView) holder.linearLayout.getChildAt(0);
+    titleView.setText(titleText);
 
     //setup exercise list
     ListView exerciseList = (ListView) holder.linearLayout.getChildAt(1);

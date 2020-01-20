@@ -1,5 +1,6 @@
 package com.example.workouttracker;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -7,6 +8,7 @@ import com.example.workouttracker.datastructure.Json;
 import com.example.workouttracker.datastructure.Workout;
 import com.example.workouttracker.datastructure.WorkoutList;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -57,6 +60,31 @@ public class WorkoutEditor extends AppCompatActivity {
         WorkoutEditorAdapter adapter = new WorkoutEditorAdapter(this, workout);
         recyclerView.setAdapter(adapter);
         nameOfWorkout.setText(defaultName);
+
+        ImageView delete = findViewById(R.id.deleteButton);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(WorkoutEditor.this);
+                builder.setMessage("Are you sure you want to delete this workout?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteWorkout();
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
     }
 
 
@@ -94,7 +122,7 @@ public class WorkoutEditor extends AppCompatActivity {
         finish();
     }
 
-    public void deleteWorkout(View v){
+    public void deleteWorkout(){
         Intent workoutData = getIntent();
         Bundle extras = workoutData.getExtras();
         if(extras != null){
