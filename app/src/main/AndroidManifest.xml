@@ -15,7 +15,7 @@
             android:label="@string/title_activity_workout_editor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".splash_screen"
-            android:label="activity_splash_screen"
+            android:label="Workout Tracker"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ExerciseEditor"
-            android:label="@string/title_activity_exercise_editior"
+            android:label="Exercise Editor"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ActiveWorkout"
