@@ -14,6 +14,25 @@ import com.example.workouttracker.datastructure.Workout;
 
 import java.util.ArrayList;
 
+/**
+ * ActiveWorkoutAdapter: lays out elements of "Active Workout" 's recyclerView.
+ *
+ * ActiveCycleViewHolder (class): holds the layout of one cycle, and provides
+ *   references to different parts of said layout.
+ *
+ * onCreateViewHolder(ViewGroup, int) -> ActiveCycleViewHolder:
+ *   creates a new custom view holder from its layout file.
+ *
+ * onBindViewHolder(ActiveCycleViewHolder, int):
+ *   applies the correct details to the layout, and sets up the cycle counter.
+ *
+ * onViewRecycled(ActiveCycleViewHolder):
+ *   reads the current counter value and stores it until this view returns.
+ *
+ * getItemCount() -> int:
+ *   returns the number of cycles in this workout.
+ */
+
 public class ActiveWorkoutAdapter extends RecyclerView.Adapter<ActiveWorkoutAdapter.ActiveCycleViewHolder> {
 
 private static final int CYCLE_TITLE_LAYOUT_INDEX = 0;
@@ -21,6 +40,10 @@ private static final int EXERCISE_LIST_INDEX = 1;
 private static final int CYCLE_TITLE_VIEW_INDEX = 0;
 private static final int CYCLE_COUNTER_LAYOUT_INDEX = 1;
 
+  /**
+   * ActiveCycleViewHolder (class): holds the layout of one cycle, and provides
+   *   references to different parts of said layout.
+   */
   public static class ActiveCycleViewHolder extends RecyclerView.ViewHolder {
     public LinearLayout cycleLayout;
     public LinearLayout cycleTitleLayout;
@@ -52,6 +75,13 @@ private static final int CYCLE_COUNTER_LAYOUT_INDEX = 1;
     progress = new WorkoutProgress(workoutToDo);
   }
 
+  /**
+   * onCreateViewHolder(ViewGroup, int) -> ActiveCycleViewHolder:
+   *   creates a new custom view holder from its layout file.
+   * @param parent: the view group this will be a part of.
+   * @param viewType: the view type (unused)
+   * @return: a new view holder.
+   */
   @Override
   public ActiveCycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -62,6 +92,12 @@ private static final int CYCLE_COUNTER_LAYOUT_INDEX = 1;
     return holder;
   }
 
+  /**
+   * onBindViewHolder(ActiveCycleViewHolder, int):
+   *   applies the correct details to the layout, and sets up the cycle counter.
+   * @param holder: the view holder to be set up.
+   * @param position: index of the cycle to be displayed.
+   */
   @Override
   public void onBindViewHolder(ActiveCycleViewHolder holder, final int position) {
     //store position data
@@ -84,6 +120,11 @@ private static final int CYCLE_COUNTER_LAYOUT_INDEX = 1;
     holder.exerciseView.setAdapter(adapter);
   }
 
+  /**
+   * onViewRecycled(ActiveCycleViewHolder):
+   *   reads the current counter value and stores it until this view returns.
+   * @param holder: the holder for the to-be-recycled view.
+   */
   @Override
   public void onViewRecycled(ActiveCycleViewHolder holder) {
     TextView counterTextView = (TextView) holder.counterLayout.getChildAt(CustomCounterHelper.COUNTER_TEXT_INDEX);
@@ -91,6 +132,11 @@ private static final int CYCLE_COUNTER_LAYOUT_INDEX = 1;
     progress.setCyclesCompleted(holder.cycleIndex, cyclesCompleted);
   }
 
+  /**
+   * getItemCount() -> int:
+   *   returns the number of cycles in this workout.
+   * @return: the number of cycles.
+   */
   @Override
   public int getItemCount() {
     return cycles.size();
