@@ -55,33 +55,11 @@
         app:layout_constraintEnd_toStartOf="@id/saveButton"
         app:layout_constraintStart_toEndOf="@+id/cancelButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_delete_forever_black_24dp" />
+        app:srcCompat="@drawable/ic_delete_forever_black_24dp" /><![CDATA[
 
-    <TextView
-        android:id="@+id/numOfCycles"
-        android:layout_width="80dp"
-        android:layout_height="109dp"
-        android:layout_marginBottom="36dp"
-        android:gravity="center"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/newExercise"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/minusSets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="41dp"
-        android:background="#F9F9F9"
-        android:onClick="subtractNumber"
-        android:text="-"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toStartOf="@+id/numOfCycles"
-        app:layout_constraintTop_toBottomOf="@+id/sets" /><![CDATA[
+
+
 
 
 
@@ -96,40 +74,73 @@
 
 
 
+
+
+
+
     ]]>
+
+    <TextView
+        android:id="@+id/numOfCycles"
+        android:layout_width="80dp"
+        android:layout_height="109dp"
+        android:gravity="center"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbarrr"
+        app:layout_constraintVertical_bias="0.817" />
+
+    <Button
+        android:id="@+id/minusSets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F9F9F9"
+        android:onClick="subtractNumber"
+        android:text="-"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbarrr"
+        app:layout_constraintVertical_bias="0.785" />
 
     <Button
         android:id="@+id/addSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
-        android:layout_marginTop="32dp"
         android:background="#F9F9F9"
         android:onClick="addNumber"
         android:text="+"
         android:textSize="50sp"
-        app:layout_constraintStart_toEndOf="@+id/numOfCycles"
-        app:layout_constraintTop_toBottomOf="@+id/sets" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.786" />
 
     <TextView
         android:id="@+id/sets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="Number of Cycles"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/numOfCycles"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbarrr"
+        app:layout_constraintVertical_bias="0.649" />
 
     <Button
         android:id="@+id/newExercise"
         android:layout_width="280dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="35dp"
         android:background="@drawable/custombutton"
         android:gravity="center|center_horizontal"
         android:onClick="newExercise"
@@ -138,7 +149,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbarrr"
+        app:layout_constraintVertical_bias="0.976" />
 
     <TextView
         android:id="@+id/Name"
@@ -178,11 +191,11 @@
         layout="@layout/content_cycles_editor"
         android:layout_width="349dp"
         android:layout_height="213dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/sets"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameOfCycle" />
+        app:layout_constraintTop_toTopOf="@+id/toolbarrr"
+        app:layout_constraintVertical_bias="0.434" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
