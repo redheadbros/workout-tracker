@@ -28,10 +28,11 @@
         <activity
             android:name=".CyclesEditor"
             android:label="@string/title_activity_cycles_editor"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".ExerciseEditor"
-            android:label="@string/title_activity_exercise_editior"
+            android:label="Exercise Editor"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ActiveWorkout"
