@@ -25,6 +25,7 @@ public class WorkoutEditor extends AppCompatActivity {
     private Workout workout;
     private EditText nameOfWorkout;
     private String defaultName;
+    private boolean toBeSaved;
 
 
     @Override
@@ -34,6 +35,8 @@ public class WorkoutEditor extends AppCompatActivity {
         nameOfWorkout = findViewById(R.id.NameOfWorkout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        toBeSaved = true;
         Intent workoutData = getIntent();
         Bundle extras = workoutData.getExtras();
         if(extras != null){
@@ -71,7 +74,7 @@ public class WorkoutEditor extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                deleteWorkout();
+                                deleteWorkoutAndQuit();
 
                             }
                         })
@@ -103,7 +106,7 @@ public class WorkoutEditor extends AppCompatActivity {
         startActivity(newCycle);
     }
 
-    public void saveWorkout(View v){
+    public void saveWorkoutAndQuit(){
         workout.setName(nameOfWorkout.getText().toString());
         WorkoutList workoutList = Json.loadFromJson(getApplicationContext(), WorkoutList.class, "WORKOUT.json");
         if(workoutList == null){
@@ -119,10 +122,9 @@ public class WorkoutEditor extends AppCompatActivity {
         Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
         Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
         startActivity(mainScreen);
-        finish();
     }
 
-    public void deleteWorkout(){
+    public void deleteWorkoutAndQuit(){
         Intent workoutData = getIntent();
         Bundle extras = workoutData.getExtras();
         if(extras != null){
@@ -133,9 +135,19 @@ public class WorkoutEditor extends AppCompatActivity {
             workoutList.setWorkoutList(workoutArray);
             Json.saveToJson(getApplicationContext(), workoutList, "WORKOUT.json");
         }
+
+        toBeSaved = false;
+
         Intent mainScreen = new Intent(WorkoutEditor.this,SelectWorkout.class);
         startActivity(mainScreen);
         finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (toBeSaved) {
+            saveWorkoutAndQuit();
+        }
+    }
 }
