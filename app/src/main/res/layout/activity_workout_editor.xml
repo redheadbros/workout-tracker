@@ -72,6 +72,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deleteButton" />
 
+    <ImageView
+        android:id="@+id/saveButton2"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="saveWorkout"
+        android:text="Save"
+        app:layout_constraintStart_toStartOf="@+id/toolbarrr"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_save_black_24dp" />
+
     <EditText
         android:id="@+id/NameOfWorkout"
         android:layout_width="330dp"
