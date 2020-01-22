@@ -77,4 +77,6 @@ public class SelectWorkout extends AppCompatActivity {
     startActivity(gotoWorkoutEditor);
   }
 
+  @Override
+  public void onBackPressed() { }
 }

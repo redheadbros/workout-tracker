@@ -1,5 +1,13 @@
 package com.example.workouttracker.datastructure;
-
+/**
+ * Author: Philippe Nadon
+ * Author: Yusheng Liu
+ *
+ * This is the file that provide methods for saving and loading data from files
+ *
+ * Yusheng: I build this file base on the understanding of Phil's code and more than 80% of this
+ * file's authority belong to Phil
+ */
 
 import com.google.gson.Gson;
 
