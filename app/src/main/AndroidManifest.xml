@@ -13,6 +13,8 @@
         <activity
             android:name=".WorkoutEditor"
             android:label="@string/title_activity_workout_editor"
+            android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/AppTheme.NoActionBar" />
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name=".splash_screen"
