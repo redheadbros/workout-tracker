@@ -81,7 +81,7 @@
         android:layout_marginTop="8dp"
         android:onClick="saveWorkout"
         android:text="Save"
-        app:layout_constraintStart_toStartOf="@+id/toolbarrr"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_save_black_24dp" />
 
