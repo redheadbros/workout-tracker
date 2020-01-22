@@ -118,5 +118,6 @@ public class CyclesEditor extends AppCompatActivity {
         finish();
     }
 
-
+    @Override
+    public void onBackPressed() { }
 }

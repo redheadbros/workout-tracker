@@ -117,4 +117,7 @@ public class ExerciseEditor extends AppCompatActivity{
         startActivity(cycleEditor);
         finish();
     }
+
+    @Override
+    public void onBackPressed() { }
 }
