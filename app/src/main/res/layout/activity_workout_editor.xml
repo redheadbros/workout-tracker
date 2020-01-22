@@ -95,18 +95,6 @@
         app:layout_constraintVertical_bias="0.032" />
 
     <ImageView
-        android:id="@+id/saveButton"
-        android:layout_width="67dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="saveWorkout"
-        app:layout_constraintStart_toStartOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_save_black_24dp" />
-
-    <ImageView
         android:id="@+id/deleteButton"
         android:layout_width="67dp"
         android:layout_height="51dp"
