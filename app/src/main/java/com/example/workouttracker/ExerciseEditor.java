@@ -1,5 +1,6 @@
 package com.example.workouttracker;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -7,6 +8,7 @@ import com.example.workouttracker.datastructure.Cycle;
 import com.example.workouttracker.datastructure.Exercise;
 import com.example.workouttracker.datastructure.Workout;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -95,7 +97,28 @@ public class ExerciseEditor extends AppCompatActivity{
         setsNum.setText(String.valueOf(numberOfSets));
     }
 
-    public void deleteExercise(View v){
+    public void onClickDeleteButton(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this exercise?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    deleteExercise();
+
+                }
+            })
+            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    public void deleteExercise(){
         if(editingMode){
             exerciseList.remove(exerciseIndex);
         }

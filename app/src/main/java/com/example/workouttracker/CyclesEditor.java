@@ -1,8 +1,10 @@
 package com.example.workouttracker;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -108,7 +110,28 @@ public class CyclesEditor extends AppCompatActivity {
         workout.setCycles(cycleList);
     }
 
-    public void deleteCycle(View v){
+    public void onClickDeleteButton(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this cycle?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    deleteCycle();
+
+                }
+            })
+            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    public void deleteCycle(){
         ArrayList<Cycle> cycleList = workout.getCycles();
         cycleList.remove(cycleIndex);
         workout.setCycles(cycleList);
